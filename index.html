@@ -33,28 +33,61 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
-        .header-content {
+        .header-top {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .accounting-link-container {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .accounting-link {
+            background: #40E0D0;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9em;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .accounting-link:hover {
+            transform: scale(1.05);
         }
 
         h1 {
             color: #667eea;
             font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .company-info {
+            color: #555;
+            font-size: 0.95em;
+            line-height: 1.8;
+            margin: 15px 0;
+        }
+
+        .company-info strong {
+            color: #667eea;
         }
 
         .tagline {
             color: #666;
             font-style: italic;
+            margin: 10px 0;
         }
 
         nav {
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .nav-btn {
@@ -71,21 +104,6 @@
         .nav-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .accounting-link {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            display: inline-block;
-            transition: transform 0.3s;
-        }
-
-        .accounting-link:hover {
-            transform: scale(1.05);
         }
 
         .content-section {
@@ -138,7 +156,7 @@
             margin: 10px 0;
         }
 
-        .add-to-cart-btn {
+        .purchase-order-btn {
             background: #667eea;
             color: white;
             border: none;
@@ -150,7 +168,7 @@
             transition: background 0.3s;
         }
 
-        .add-to-cart-btn:hover {
+        .purchase-order-btn:hover {
             background: #764ba2;
         }
 
@@ -193,28 +211,6 @@
 
         .submit-btn:hover {
             transform: scale(1.05);
-        }
-
-        .cart-summary {
-            background: #f5f5f5;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .cart-total {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #667eea;
-            margin-top: 15px;
-            text-align: right;
         }
 
         .success-message {
@@ -266,39 +262,131 @@
             border-left: 4px solid #f5576c;
         }
 
-        .payment-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
+        .order-tracker {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
         }
 
-        .payment-option {
-            border: 2px solid #e0e0e0;
+        .tracking-stages {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .stage {
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+            padding: 10px;
+            position: relative;
+        }
+
+        .stage-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        .stage-pass { background: #4caf50; }
+        .stage-pending { background: #ff9800; }
+        .stage-canceled { background: #f44336; }
+        .stage-inactive { background: #ccc; }
+
+        .stage-line {
+            height: 3px;
+            background: #ccc;
+            flex: 1;
+            margin: 0 10px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        .invoice-preview {
+            border: 2px solid #667eea;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            background: #f9f9f9;
+        }
+
+        .invoice-header {
+            text-align: center;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .invoice-details {
+            margin: 15px 0;
+        }
+
+        .invoice-details p {
+            margin: 8px 0;
+        }
+
+        .contact-info {
+            background: #e3f2fd;
             padding: 15px;
             border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .payment-option:hover {
-            border-color: #667eea;
-            background: #f5f5f5;
-        }
-
-        .payment-option input[type="radio"] {
-            width: auto;
-            margin-right: 10px;
+            margin: 15px 0;
         }
 
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
             h1 {
                 font-size: 1.5em;
+            }
+
+            .tracking-stages {
+                flex-direction: column;
+            }
+
+            .stage-line {
+                width: 3px;
+                height: 30px;
+                margin: 10px auto;
             }
         }
     </style>
@@ -306,22 +394,27 @@
 <body>
     <div class="container">
         <header>
-            <div class="header-content">
-                <div>
-                    <h1>🏥 Reach out Ema Agency</h1>
-                    <p class="tagline">Your Trusted Partner in Medical & Industrial Safety Equipment</p>
+            <div class="header-top">
+                <h1>🏥 Reach out Ema Agency</h1>
+                <div class="company-info">
+                    <strong>Registered Company</strong><br>
+                    P.O. Box 9424-00200, Nairobi, Kenya<br>
+                    📧 Eunicelarry@yahoo.com<br>
+                    📞 +254721634476 | +254715646331
                 </div>
-                <div>
-                    <a href="https://magero1985.github.io/Tau-Africa-Accounting/" target="_blank" class="accounting-link">
-                        📊 Accounting System
-                    </a>
-                </div>
+                <p class="tagline">Your Trusted Partner in Medical & Industrial Safety Equipment</p>
             </div>
+            
+            <div class="accounting-link-container">
+                <a href="https://magero1985.github.io/Tau-Africa-Accounting/" target="_blank" class="accounting-link">
+                    📊 Accounting System
+                </a>
+            </div>
+
             <nav>
                 <button class="nav-btn" onclick="showSection('home')">Home</button>
                 <button class="nav-btn" onclick="showSection('products')">Products</button>
-                <button class="nav-btn" onclick="showSection('cart')">Cart (<span id="cart-count">0</span>)</button>
-                <button class="nav-btn" onclick="showSection('order')">Place Order</button>
+                <button class="nav-btn" onclick="showSection('track-order')">Track Order</button>
                 <button class="nav-btn" onclick="showSection('newsletter')">Newsletter</button>
                 <button class="nav-btn" onclick="showSection('admin')">Admin Panel</button>
             </nav>
@@ -351,6 +444,13 @@
                 <h3>🚚 Free Delivery in Nairobi</h3>
                 <p>We offer free delivery within Nairobi or at costs equivalent to shop pickup for other locations!</p>
             </div>
+
+            <div class="contact-info">
+                <h3>📞 Contact Us</h3>
+                <p>For inquiries and order tracking, please contact us at:<br>
+                📧 Email: Eunicelarry@yahoo.com<br>
+                📞 Phone: +254721634476 or +254715646331</p>
+            </div>
         </div>
 
         <!-- Products Section -->
@@ -367,75 +467,18 @@
             <div class="products-grid" id="products-grid"></div>
         </div>
 
-        <!-- Cart Section -->
-        <div id="cart" class="content-section">
-            <h2>Shopping Cart</h2>
-            <div id="cart-items"></div>
-            <div class="cart-summary" id="cart-summary" style="display: none;">
-                <div class="cart-total">Total: KES <span id="cart-total">0</span></div>
-                <button class="submit-btn" onclick="showSection('order')" style="margin-top: 20px;">Proceed to Checkout</button>
+        <!-- Track Order Section -->
+        <div id="track-order" class="content-section">
+            <h2>Track Your Order</h2>
+            <p>Enter your order ID to track the progress of your order.</p>
+            
+            <div class="form-group" style="max-width: 400px; margin: 20px 0;">
+                <label>Order ID *</label>
+                <input type="text" id="track-order-id" placeholder="Enter your order ID">
+                <button class="submit-btn" style="margin-top: 10px;" onclick="trackOrder()">Track Order</button>
             </div>
-        </div>
 
-        <!-- Order Form Section -->
-        <div id="order" class="content-section">
-            <h2>Place Your Order</h2>
-            <form id="order-form" onsubmit="submitOrder(event)">
-                <div class="form-group">
-                    <label>Full Name *</label>
-                    <input type="text" id="customer-name" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Email Address *</label>
-                    <input type="email" id="customer-email" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Phone Number *</label>
-                    <input type="tel" id="customer-phone" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Delivery Address *</label>
-                    <textarea id="delivery-address" rows="3" required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label>Preferred Delivery Date *</label>
-                    <input type="date" id="delivery-date" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Special Instructions</label>
-                    <textarea id="special-instructions" rows="3"></textarea>
-                </div>
-
-                <h3>Payment Options</h3>
-                <div class="payment-options">
-                    <div class="payment-option">
-                        <input type="radio" name="payment" value="full" id="payment-full" checked>
-                        <label for="payment-full">Full Payment</label>
-                    </div>
-                    <div class="payment-option">
-                        <input type="radio" name="payment" value="installment-2" id="payment-2">
-                        <label for="payment-2">2 Installments</label>
-                    </div>
-                    <div class="payment-option">
-                        <input type="radio" name="payment" value="installment-3" id="payment-3">
-                        <label for="payment-3">3 Installments</label>
-                    </div>
-                    <div class="payment-option">
-                        <input type="radio" name="payment" value="installment-4" id="payment-4">
-                        <label for="payment-4">4 Installments</label>
-                    </div>
-                </div>
-
-                <button type="submit" class="submit-btn">Submit Order</button>
-                <div class="success-message" id="order-success">
-                    ✅ Order submitted successfully! We'll contact you shortly with confirmation.
-                </div>
-            </form>
+            <div id="tracking-result"></div>
         </div>
 
         <!-- Newsletter Section -->
@@ -480,26 +523,6 @@
                     ✅ Thank you for subscribing! You'll receive our updates soon.
                 </div>
             </form>
-
-            <div class="admin-panel" style="margin-top: 40px;">
-                <h3>Send Newsletter to Subscribers</h3>
-                <form id="send-newsletter-form" onsubmit="sendNewsletterBulk(event)">
-                    <div class="form-group">
-                        <label>Subject *</label>
-                        <input type="text" id="newsletter-subject" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Message *</label>
-                        <textarea id="newsletter-message" rows="6" required></textarea>
-                    </div>
-
-                    <button type="submit" class="submit-btn">Send to All Subscribers</button>
-                    <div class="success-message" id="newsletter-sent">
-                        ✅ Newsletter queued for sending!
-                    </div>
-                </form>
-            </div>
         </div>
 
         <!-- Admin Panel Section -->
@@ -507,28 +530,102 @@
             <h2>Admin Panel - Order Management</h2>
             
             <div class="admin-panel">
-                <h3>📋 Pending Orders</h3>
-                <div id="pending-orders" class="invoice-list"></div>
-            </div>
-
-            <div class="admin-panel" style="margin-top: 20px;">
-                <h3>💰 Unpaid Invoices</h3>
-                <div id="unpaid-invoices" class="invoice-list"></div>
-                <button class="submit-btn" onclick="sendPaymentReminders()">Send Payment Reminders</button>
-                <div class="success-message" id="reminder-sent">
-                    ✅ Payment reminders sent successfully!
-                </div>
-            </div>
-
-            <div class="admin-panel" style="margin-top: 20px;">
-                <h3>✅ Completed Orders</h3>
-                <div id="completed-orders" class="invoice-list"></div>
+                <h3>📋 All Orders</h3>
+                <div id="all-orders" class="invoice-list"></div>
             </div>
         </div>
     </div>
 
+    <!-- Purchase Order Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeOrderModal()">&times;</span>
+            <h2>Purchase Order Form</h2>
+            <div id="modal-product-info"></div>
+            
+            <form id="purchase-order-form" onsubmit="submitPurchaseOrder(event)">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" id="po-customer-name" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address *</label>
+                    <input type="email" id="po-customer-email" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Phone Number *</label>
+                    <input type="tel" id="po-customer-phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Quantity *</label>
+                    <input type="number" id="po-quantity" min="1" value="1" required onchange="updateTotal()">
+                </div>
+
+                <div class="form-group">
+                    <label>Size (if applicable)</label>
+                    <select id="po-size">
+                        <option value="">Select Size</option>
+                        <option value="XS">Extra Small (XS)</option>
+                        <option value="S">Small (S)</option>
+                        <option value="M">Medium (M)</option>
+                        <option value="L">Large (L)</option>
+                        <option value="XL">Extra Large (XL)</option>
+                        <option value="XXL">Double XL (XXL)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Color (if applicable)</label>
+                    <input type="text" id="po-color" placeholder="e.g., Blue, White, Green">
+                </div>
+
+                <div class="form-group">
+                    <label>Payment Method *</label>
+                    <select id="po-payment-method" required>
+                        <option value="">Select Payment Method</option>
+                        <option value="M-Pesa">M-Pesa</option>
+                        <option value="Bank Transfer">Bank Transfer</option>
+                        <option value="Cash on Delivery">Cash on Delivery</option>
+                        <option value="Installments">Installments (2-4 months)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Expected Delivery Date *</label>
+                    <input type="date" id="po-delivery-date" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Delivery Address *</label>
+                    <textarea id="po-delivery-address" rows="3" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Special Instructions</label>
+                    <textarea id="po-special-instructions" rows="3"></textarea>
+                </div>
+
+                <div style="background: #e3f2fd; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    <strong>Total Cost: KES <span id="po-total-cost">0</span></strong>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Purchase Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Invoice Confirmation Modal -->
+    <div id="invoiceModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeInvoiceModal()">&times;</span>
+            <div id="invoice-content"></div>
+        </div>
+    </div>
+
     <script>
-        // Sample product database
         const products = [
             { id: 1, name: 'Medical Scrubs Set', category: 'medical', price: 2500, description: 'High-quality hospital scrubs (top & bottom)' },
             { id: 2, name: 'PPE Kit Complete', category: 'medical', price: 3500, description: 'Full PPE kit with mask, gloves, gown' },
@@ -544,12 +641,10 @@
             { id: 12, name: 'School Uniform Set', category: 'educational', price: 2800, description: 'Complete school uniform' },
         ];
 
-        // Cart management
-        let cart = [];
         let orders = [];
         let subscribers = [];
+        let currentProduct = null;
 
-        // Initialize products display
         function displayProducts(filterCategory = 'all') {
             const grid = document.getElementById('products-grid');
             grid.innerHTML = '';
@@ -565,13 +660,12 @@
                     <h3>${product.name}</h3>
                     <p>${product.description}</p>
                     <div class="product-price">KES ${product.price.toLocaleString()}</div>
-                    <button class="add-to-cart-btn" onclick="addToCart(${product.id})">Add to Cart</button>
+                    <button class="purchase-order-btn" onclick="openOrderModal(${product.id})">Purchase Order</button>
                 `;
                 grid.appendChild(card);
             });
         }
 
-        // Filter products
         function filterProducts(category) {
             document.querySelectorAll('.category-tab').forEach(tab => {
                 tab.classList.remove('active');
@@ -580,121 +674,251 @@
             displayProducts(category);
         }
 
-        // Add to cart
-        function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            const existingItem = cart.find(item => item.id === productId);
+        function openOrderModal(productId) {
+            currentProduct = products.find(p => p.id === productId);
+            const modal = document.getElementById('orderModal');
+            const productInfo = document.getElementById('modal-product-info');
+            
+            productInfo.innerHTML = `
+                <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                    <h3>${currentProduct.name}</h3>
+                    <p>${currentProduct.description}</p>
+                    <p><strong>Unit Price: KES ${currentProduct.price.toLocaleString()}</strong></p>
+                </div>
+            `;
+            
+            document.getElementById('po-total-cost').textContent = currentProduct.price.toLocaleString();
+            modal.style.display = 'block';
 
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({ ...product, quantity: 1 });
+            const today = new Date();
+            today.setDate(today.getDate() + 2);
+            document.getElementById('po-delivery-date').min = today.toISOString().split('T')[0];
+        }
+
+        function closeOrderModal() {
+            document.getElementById('orderModal').style.display = 'none';
+            document.getElementById('purchase-order-form').reset();
+        }
+
+        function updateTotal() {
+            if (currentProduct) {
+                const quantity = parseInt(document.getElementById('po-quantity').value) || 1;
+                const total = currentProduct.price * quantity;
+                document.getElementById('po-total-cost').textContent = total.toLocaleString();
             }
-
-            updateCartDisplay();
-            alert(`${product.name} added to cart!`);
         }
 
-        // Update cart display
-        function updateCartDisplay() {
-            const cartCount = document.getElementById('cart-count');
-            const cartItems = document.getElementById('cart-items');
-            const cartSummary = document.getElementById('cart-summary');
-            const cartTotal = document.getElementById('cart-total');
-
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            cartCount.textContent = totalItems;
-
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<p>Your cart is empty</p>';
-                cartSummary.style.display = 'none';
-                return;
-            }
-
-            cartSummary.style.display = 'block';
-            cartItems.innerHTML = '';
-            let total = 0;
-
-            cart.forEach((item, index) => {
-                const itemTotal = item.price * item.quantity;
-                total += itemTotal;
-
-                const cartItem = document.createElement('div');
-                cartItem.className = 'cart-item';
-                cartItem.innerHTML = `
-                    <div>
-                        <strong>${item.name}</strong><br>
-                        KES ${item.price.toLocaleString()} × ${item.quantity}
-                    </div>
-                    <div>
-                        <button onclick="updateQuantity(${index}, -1)" style="padding: 5px 10px; margin-right: 5px;">-</button>
-                        <button onclick="updateQuantity(${index}, 1)" style="padding: 5px 10px; margin-right: 10px;">+</button>
-                        <strong>KES ${itemTotal.toLocaleString()}</strong>
-                        <button onclick="removeFromCart(${index})" style="padding: 5px 10px; margin-left: 10px; background: #f5576c; color: white; border: none; border-radius: 5px; cursor: pointer;">Remove</button>
-                    </div>
-                `;
-                cartItems.appendChild(cartItem);
-            });
-
-            cartTotal.textContent = total.toLocaleString();
-        }
-
-        // Update quantity
-        function updateQuantity(index, change) {
-            cart[index].quantity += change;
-            if (cart[index].quantity <= 0) {
-                cart.splice(index, 1);
-            }
-            updateCartDisplay();
-        }
-
-        // Remove from cart
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartDisplay();
-        }
-
-        // Submit order
-        function submitOrder(e) {
+        function submitPurchaseOrder(e) {
             e.preventDefault();
 
-            if (cart.length === 0) {
-                alert('Your cart is empty! Please add items before placing an order.');
-                return;
-            }
+            const quantity = parseInt(document.getElementById('po-quantity').value);
+            const total = currentProduct.price * quantity;
 
             const order = {
-                id: Date.now(),
+                id: 'ORD-' + Date.now(),
+                productId: currentProduct.id,
+                productName: currentProduct.name,
                 customer: {
-                    name: document.getElementById('customer-name').value,
-                    email: document.getElementById('customer-email').value,
-                    phone: document.getElementById('customer-phone').value,
-                    address: document.getElementById('delivery-address').value,
+                    name: document.getElementById('po-customer-name').value,
+                    email: document.getElementById('po-customer-email').value,
+                    phone: document.getElementById('po-customer-phone').value,
+                    address: document.getElementById('po-delivery-address').value,
                 },
-                deliveryDate: document.getElementById('delivery-date').value,
-                specialInstructions: document.getElementById('special-instructions').value,
-                paymentOption: document.querySelector('input[name="payment"]:checked').value,
-                items: [...cart],
-                total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
-                status: 'pending',
-                paymentStatus: 'unpaid',
+                quantity: quantity,
+                size: document.getElementById('po-size').value,
+                color: document.getElementById('po-color').value,
+                unitPrice: currentProduct.price,
+                totalCost: total,
+                paymentMethod: document.getElementById('po-payment-method').value,
+                deliveryDate: document.getElementById('po-delivery-date').value,
+                specialInstructions: document.getElementById('po-special-instructions').value,
                 orderDate: new Date().toISOString(),
+                status: 'placement',
+                stages: {
+                    placement: { status: 'pass', date: new Date().toISOString() },
+                    processing: { status: 'pending', date: null },
+                    sortment: { status: 'pending', date: null },
+                    delivery: { status: 'pending', date: null },
+                    confirmed: { status: 'pending', date: null }
+                }
             };
 
             orders.push(order);
             
-            document.getElementById('order-success').style.display = 'block';
-            document.getElementById('order-form').reset();
-            cart = [];
-            updateCartDisplay();
+            generateInvoice(order);
+            closeOrderModal();
             displayOrders();
-
-            setTimeout(() => {
-                document.getElementById('order-success').style.display = 'none';
-            }, 5000);
         }
 
-        // Subscribe to newsletter
+        function generateInvoice(order) {
+            const invoiceContent = `
+                <div class="invoice-preview">
+                    <div class="invoice-header">
+                        <h2>🏥 Reach out Ema Agency</h2>
+                        <p>P.O. Box 9424-00200, Nairobi, Kenya</p>
+                        <p>Eunicelarry@yahoo.com | +254721634476</p>
+                        <h3 style="color: #667eea; margin-top: 15px;">PURCHASE ORDER INVOICE</h3>
+                    </div>
+
+                    <div class="invoice-details">
+                        <p><strong>Order ID:</strong> ${order.id}</p>
+                        <p><strong>Date:</strong> ${new Date(order.orderDate).toLocaleDateString()}</p>
+                        <hr style="margin: 15px 0;">
+                        
+                        <h4>Customer Details:</h4>
+                        <p><strong>Name:</strong> ${order.customer.name}</p>
+                        <p><strong>Email:</strong> ${order.customer.email}</p>
+                        <p><strong>Phone:</strong> ${order.customer.phone}</p>
+                        <p><strong>Delivery Address:</strong> ${order.customer.address}</p>
+                        <hr style="margin: 15px 0;">
+                        
+                        <h4>Order Details:</h4>
+                        <p><strong>Product:</strong> ${order.productName}</p>
+                        <p><strong>Quantity:</strong> ${order.quantity}</p>
+                        ${order.size ? `<p><strong>Size:</strong> ${order.size}</p>` : ''}
+                        ${order.color ? `<p><strong>Color:</strong> ${order.color}</p>` : ''}
+                        <p><strong>Unit Price:</strong> KES ${order.unitPrice.toLocaleString()}</p>
+                        <p style="font-size: 1.3em; color: #667eea;"><strong>Total Cost: KES ${order.totalCost.toLocaleString()}</strong></p>
+                        <p><strong>Payment Method:</strong> ${order.paymentMethod}</p>
+                        <p><strong>Expected Delivery:</strong> ${new Date(order.deliveryDate).toLocaleDateString()}</p>
+                        ${order.specialInstructions ? `<p><strong>Special Instructions:</strong> ${order.specialInstructions}</p>` : ''}
+                    </div>
+
+                    <div class="contact-info" style="margin-top: 20px;">
+                        <h4>📞 Track Your Order</h4>
+                        <p>To track your order status, please use Order ID: <strong>${order.id}</strong></p>
+                        <p>Contact us at:<br>
+                        📧 Email: Eunicelarry@yahoo.com<br>
+                        📞 Phone: +254721634476 or +254715646331</p>
+                    </div>
+
+                    <div style="background: #fff3e0; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                        <p><strong>Note:</strong> This invoice has been sent to the store owner at grouptauafrica@gmail.com. You will receive confirmation once the store reviews your order. Please keep your Order ID for tracking purposes.</p>
+                    </div>
+                </div>
+
+                <button class="submit-btn" onclick="closeInvoiceModal()">Close</button>
+            `;
+
+            document.getElementById('invoice-content').innerHTML = invoiceContent;
+            document.getElementById('invoiceModal').style.display = 'block';
+
+            sendInvoiceToStore(order);
+            alert(`Order submitted successfully! Your Order ID is: ${order.id}\n\nAn invoice has been sent to the store. You will be notified once the order is confirmed.`);
+        }
+
+        function sendInvoiceToStore(order) {
+            console.log('Sending invoice to grouptauafrica@gmail.com');
+            console.log('Order Details:', order);
+        }
+
+        function closeInvoiceModal() {
+            document.getElementById('invoiceModal').style.display = 'none';
+        }
+
+        function trackOrder() {
+            const orderId = document.getElementById('track-order-id').value.trim();
+            const trackingResult = document.getElementById('tracking-result');
+
+            if (!orderId) {
+                trackingResult.innerHTML = '<p style="color: red;">Please enter an Order ID</p>';
+                return;
+            }
+
+            const order = orders.find(o => o.id === orderId);
+
+            if (!order) {
+                trackingResult.innerHTML = `
+                    <div style="background: #ffebee; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                        <p><strong>Order not found!</strong></p>
+                        <p>Please check your Order ID and try again, or contact us at:</p>
+                        <p>📧 Eunicelarry@yahoo.com | 📞 +254721634476</p>
+                    </div>
+                `;
+                return;
+            }
+
+            trackingResult.innerHTML = `
+                <div class="order-tracker">
+                    <h3>Order Tracking - ${order.id}</h3>
+                    <p><strong>Product:</strong> ${order.productName}</p>
+                    <p><strong>Quantity:</strong> ${order.quantity}</p>
+                    <p><strong>Total:</strong> KES ${order.totalCost.toLocaleString()}</p>
+                    <p><strong>Customer:</strong> ${order.customer.name}</p>
+                    
+                    <div class="tracking-stages">
+                        <div class="stage">
+                            <div class="stage-icon ${getStageClass(order.stages.placement.status)}">1</div>
+                            <strong>Order Placement</strong>
+                            <p style="font-size: 0.9em;">${order.stages.placement.status === 'pass' ? '✓ Completed' : 'Pending'}</p>
+                            ${order.stages.placement.date ? `<p style="font-size: 0.8em;">${new Date(order.stages.placement.date).toLocaleDateString()}</p>` : ''}
+                        </div>
+                        
+                        <div class="stage-line" style="background: ${order.stages.processing.status !== 'pending' ? '#4caf50' : '#ccc'};"></div>
+                        
+                        <div class="stage">
+                            <div class="stage-icon ${getStageClass(order.stages.processing.status)}">2</div>
+                            <strong>Order Processing</strong>
+                            <p style="font-size: 0.9em;">${getStageText(order.stages.processing.status)}</p>
+                            ${order.stages.processing.date ? `<p style="font-size: 0.8em;">${new Date(order.stages.processing.date).toLocaleDateString()}</p>` : ''}
+                        </div>
+                        
+                        <div class="stage-line" style="background: ${order.stages.sortment.status !== 'pending' ? '#4caf50' : '#ccc'};"></div>
+                        
+                        <div class="stage">
+                            <div class="stage-icon ${getStageClass(order.stages.sortment.status)}">3</div>
+                            <strong>Order Sortment</strong>
+                            <p style="font-size: 0.9em;">${getStageText(order.stages.sortment.status)}</p>
+                            ${order.stages.sortment.date ? `<p style="font-size: 0.8em;">${new Date(order.stages.sortment.date).toLocaleDateString()}</p>` : ''}
+                        </div>
+                        
+                        <div class="stage-line" style="background: ${order.stages.delivery.status !== 'pending' ? '#4caf50' : '#ccc'};"></div>
+                        
+                        <div class="stage">
+                            <div class="stage-icon ${getStageClass(order.stages.delivery.status)}">4</div>
+                            <strong>Order Delivery</strong>
+                            <p style="font-size: 0.9em;">${getStageText(order.stages.delivery.status)}</p>
+                            ${order.stages.delivery.date ? `<p style="font-size: 0.8em;">${new Date(order.stages.delivery.date).toLocaleDateString()}</p>` : ''}
+                        </div>
+                        
+                        <div class="stage-line" style="background: ${order.stages.confirmed.status !== 'pending' ? '#4caf50' : '#ccc'};"></div>
+                        
+                        <div class="stage">
+                            <div class="stage-icon ${getStageClass(order.stages.confirmed.status)}">5</div>
+                            <strong>Delivery Confirmed</strong>
+                            <p style="font-size: 0.9em;">${getStageText(order.stages.confirmed.status)}</p>
+                            ${order.stages.confirmed.date ? `<p style="font-size: 0.8em;">${new Date(order.stages.confirmed.date).toLocaleDateString()}</p>` : ''}
+                        </div>
+                    </div>
+
+                    <div class="contact-info" style="margin-top: 20px;">
+                        <h4>📞 Need Help?</h4>
+                        <p>Contact us for any inquiries about your order:<br>
+                        📧 Email: Eunicelarry@yahoo.com<br>
+                        📞 Phone: +254721634476 or +254715646331</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function getStageClass(status) {
+            switch(status) {
+                case 'pass': return 'stage-pass';
+                case 'pending': return 'stage-pending';
+                case 'canceled': return 'stage-canceled';
+                default: return 'stage-inactive';
+            }
+        }
+
+        function getStageText(status) {
+            switch(status) {
+                case 'pass': return '✓ Completed';
+                case 'pending': return '⏳ Pending';
+                case 'canceled': return '✗ Canceled';
+                default: return 'Not Started';
+            }
+        }
+
         function subscribeNewsletter(e) {
             e.preventDefault();
 
@@ -720,100 +944,87 @@
             }, 5000);
         }
 
-        // Send newsletter bulk
-        function sendNewsletterBulk(e) {
-            e.preventDefault();
-
-            const subject = document.getElementById('newsletter-subject').value;
-            const message = document.getElementById('newsletter-message').value;
-
-            console.log(`Sending newsletter to ${subscribers.length} subscribers`);
-            console.log(`Subject: ${subject}`);
-            console.log(`Message: ${message}`);
-
-            document.getElementById('newsletter-sent').style.display = 'block';
-            document.getElementById('send-newsletter-form').reset();
-
-            setTimeout(() => {
-                document.getElementById('newsletter-sent').style.display = 'none';
-            }, 5000);
-        }
-
-        // Display orders in admin panel
         function displayOrders() {
-            const pending = document.getElementById('pending-orders');
-            const unpaid = document.getElementById('unpaid-invoices');
-            const completed = document.getElementById('completed-orders');
+            const allOrdersDiv = document.getElementById('all-orders');
+            allOrdersDiv.innerHTML = '';
 
-            pending.innerHTML = '';
-            unpaid.innerHTML = '';
-            completed.innerHTML = '';
+            if (orders.length === 0) {
+                allOrdersDiv.innerHTML = '<p>No orders yet.</p>';
+                return;
+            }
 
             orders.forEach(order => {
                 const orderDiv = document.createElement('div');
                 orderDiv.className = 'invoice-item';
                 orderDiv.innerHTML = `
-                    <strong>Order #${order.id}</strong><br>
-                    Customer: ${order.customer.name} (${order.customer.email})<br>
-                    Total: KES ${order.total.toLocaleString()}<br>
-                    Delivery: ${order.deliveryDate}<br>
-                    Payment: ${order.paymentOption}<br>
-                    <button onclick="markAsDelivered(${order.id})" style="margin-top: 10px; padding: 8px 15px; background: #4caf50; color: white; border: none; border-radius: 5px; cursor: pointer;">Mark as Delivered</button>
-                    <button onclick="markAsPaid(${order.id})" style="margin-top: 10px; padding: 8px 15px; background: #2196F3; color: white; border: none; border-radius: 5px; cursor: pointer; margin-left: 5px;">Mark as Paid</button>
+                    <strong>Order ID: ${order.id}</strong><br>
+                    <strong>Product:</strong> ${order.productName}<br>
+                    <strong>Customer:</strong> ${order.customer.name} (${order.customer.email})<br>
+                    <strong>Phone:</strong> ${order.customer.phone}<br>
+                    <strong>Quantity:</strong> ${order.quantity} | <strong>Total:</strong> KES ${order.totalCost.toLocaleString()}<br>
+                    ${order.size ? `<strong>Size:</strong> ${order.size} | ` : ''}${order.color ? `<strong>Color:</strong> ${order.color}<br>` : '<br>'}
+                    <strong>Payment Method:</strong> ${order.paymentMethod}<br>
+                    <strong>Delivery Date:</strong> ${new Date(order.deliveryDate).toLocaleDateString()}<br>
+                    <strong>Address:</strong> ${order.customer.address}<br>
+                    ${order.specialInstructions ? `<strong>Special Instructions:</strong> ${order.specialInstructions}<br>` : ''}
+                    <strong>Current Stage:</strong> ${getCurrentStage(order)}<br>
+                    <div style="margin-top: 10px;">
+                        <button onclick="updateOrderStage('${order.id}', 'processing')" style="padding: 8px 15px; background: #2196F3; color: white; border: none; border-radius: 5px; cursor: pointer; margin-right: 5px;">Start Processing</button>
+                        <button onclick="updateOrderStage('${order.id}', 'sortment')" style="padding: 8px 15px; background: #FF9800; color: white; border: none; border-radius: 5px; cursor: pointer; margin-right: 5px;">Move to Sortment</button>
+                        <button onclick="updateOrderStage('${order.id}', 'delivery')" style="padding: 8px 15px; background: #9C27B0; color: white; border: none; border-radius: 5px; cursor: pointer; margin-right: 5px;">Out for Delivery</button>
+                        <button onclick="updateOrderStage('${order.id}', 'confirmed')" style="padding: 8px 15px; background: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; margin-right: 5px;">Confirm Delivery</button>
+                        <button onclick="cancelOrder('${order.id}')" style="padding: 8px 15px; background: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer;">Cancel Order</button>
+                    </div>
                 `;
+                allOrdersDiv.appendChild(orderDiv);
+            });
+        }
 
-                if (order.status === 'completed') {
-                    completed.appendChild(orderDiv);
-                } else if (order.paymentStatus === 'unpaid') {
-                    unpaid.appendChild(orderDiv);
-                } else {
-                    pending.appendChild(orderDiv);
+        function getCurrentStage(order) {
+            if (order.stages.confirmed.status === 'pass') return '✓ Delivery Confirmed';
+            if (order.stages.delivery.status === 'pass') return '🚚 Out for Delivery';
+            if (order.stages.sortment.status === 'pass') return '📦 Order Sortment';
+            if (order.stages.processing.status === 'pass') return '⚙️ Processing';
+            return '📝 Order Placed';
+        }
+
+        function updateOrderStage(orderId, stage) {
+            const order = orders.find(o => o.id === orderId);
+            if (!order) return;
+
+            const stageMap = {
+                'processing': 'processing',
+                'sortment': 'sortment',
+                'delivery': 'delivery',
+                'confirmed': 'confirmed'
+            };
+
+            const targetStage = stageMap[stage];
+            order.stages[targetStage].status = 'pass';
+            order.stages[targetStage].date = new Date().toISOString();
+
+            displayOrders();
+            alert(`Order ${orderId} updated to ${stage} stage. Customer will be notified.`);
+            console.log(`Notification sent to ${order.customer.email} about stage update: ${stage}`);
+        }
+
+        function cancelOrder(orderId) {
+            if (!confirm('Are you sure you want to cancel this order?')) return;
+
+            const order = orders.find(o => o.id === orderId);
+            if (!order) return;
+
+            Object.keys(order.stages).forEach(stage => {
+                if (order.stages[stage].status === 'pending') {
+                    order.stages[stage].status = 'canceled';
                 }
             });
+
+            displayOrders();
+            alert(`Order ${orderId} has been canceled. Customer will be notified.`);
+            console.log(`Cancellation notification sent to ${order.customer.email}`);
         }
 
-        // Mark order as delivered
-        function markAsDelivered(orderId) {
-            const order = orders.find(o => o.id === orderId);
-            if (order) {
-                order.status = 'completed';
-                displayOrders();
-                alert(`Order #${orderId} marked as delivered! Customer will be notified.`);
-            }
-        }
-
-        // Mark as paid
-        function markAsPaid(orderId) {
-            const order = orders.find(o => o.id === orderId);
-            if (order) {
-                order.paymentStatus = 'paid';
-                displayOrders();
-                alert(`Order #${orderId} marked as paid!`);
-            }
-        }
-
-        // Send payment reminders
-        function sendPaymentReminders() {
-            const unpaidOrders = orders.filter(o => o.paymentStatus === 'unpaid');
-            
-            if (unpaidOrders.length === 0) {
-                alert('No unpaid invoices to remind!');
-                return;
-            }
-
-            unpaidOrders.forEach(order => {
-                console.log(`Sending payment reminder to ${order.customer.email} for Order #${order.id}`);
-            });
-
-            document.getElementById('reminder-sent').style.display = 'block';
-            setTimeout(() => {
-                document.getElementById('reminder-sent').style.display = 'none';
-            }, 5000);
-
-            alert(`Payment reminders sent to ${unpaidOrders.length} customers!`);
-        }
-
-        // Show section
         function showSection(sectionId) {
             document.querySelectorAll('.content-section').forEach(section => {
                 section.classList.remove('active');
@@ -821,15 +1032,19 @@
             document.getElementById(sectionId).classList.add('active');
         }
 
-        // Initialize app
-        displayProducts();
-        updateCartDisplay();
-        displayOrders();
+        window.onclick = function(event) {
+            const orderModal = document.getElementById('orderModal');
+            const invoiceModal = document.getElementById('invoiceModal');
+            if (event.target == orderModal) {
+                closeOrderModal();
+            }
+            if (event.target == invoiceModal) {
+                closeInvoiceModal();
+            }
+        }
 
-        // Set minimum date for delivery
-        const today = new Date();
-        today.setDate(today.getDate() + 1);
-        document.getElementById('delivery-date').min = today.toISOString().split('T')[0];
+        displayProducts();
+        displayOrders();
     </script>
 </body>
 </html>
