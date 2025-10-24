@@ -39,9 +39,15 @@
         }
 
         h1 {
-            color: #2E8B57;
-            font-size: 2.2em;
+            background: linear-gradient(135deg, #FFD700, #FFA500, #FF8C00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.5em;
             margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+            font-weight: 900;
         }
 
         .specialist-tagline {
@@ -111,11 +117,6 @@
             transform: scale(1.15);
         }
 
-        .tagline {
-            color: #666;
-            font-style: italic;
-        }
-
         nav {
             display: flex;
             gap: 15px;
@@ -157,6 +158,50 @@
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        .welcome-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        }
+
+        .welcome-content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            text-align: center;
+            animation: slideIn 0.5s;
+        }
+
+        @keyframes slideIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .welcome-content h2 {
+            color: #2E8B57;
+            margin-bottom: 20px;
+        }
+
+        .welcome-content ul {
+            text-align: left;
+            margin: 20px 0;
+            line-height: 2;
+        }
+
+        .welcome-content ul li {
+            margin-bottom: 10px;
         }
 
         .products-grid {
@@ -208,6 +253,7 @@
 
         .form-group {
             margin-bottom: 20px;
+            position: relative;
         }
 
         label {
@@ -231,6 +277,15 @@
             border-color: #20B2AA;
         }
 
+        .password-toggle {
+            position: absolute;
+            right: 12px;
+            top: 38px;
+            cursor: pointer;
+            color: #666;
+            user-select: none;
+        }
+
         .submit-btn {
             background: linear-gradient(135deg, #2E8B57 0%, #20B2AA 100%);
             color: white;
@@ -248,13 +303,21 @@
             background: linear-gradient(135deg, #20B2AA, #4169E1);
         }
 
-        .success-message {
-            background: #4caf50;
-            color: white;
+        .success-message, .error-message {
             padding: 15px;
             border-radius: 8px;
             margin-top: 20px;
             display: none;
+        }
+
+        .success-message {
+            background: #4caf50;
+            color: white;
+        }
+
+        .error-message {
+            background: #f44336;
+            color: white;
         }
 
         .category-tabs {
@@ -435,9 +498,74 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
         }
 
+        .auth-links {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .auth-links a {
+            color: #2E8B57;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 0.9em;
+        }
+
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+
+        .chat-container {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background: #f9f9f9;
+        }
+
+        .chat-message {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .chat-message-header {
+            font-weight: bold;
+            color: #2E8B57;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .chat-message-time {
+            font-size: 0.75em;
+            color: #999;
+            margin-left: 10px;
+        }
+
+        .chat-input-area {
+            display: flex;
+            padding: 15px;
+            background: white;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .chat-input-area input {
+            flex: 1;
+            margin-right: 10px;
+        }
+
         @media (max-width: 768px) {
             h1 {
-                font-size: 1.5em;
+                font-size: 1.8em;
             }
 
             .order-tracking-stages {
@@ -451,6 +579,36 @@
     </style>
 </head>
 <body>
+    <!-- Welcome Modal -->
+    <div id="welcome-modal" class="welcome-modal">
+        <div class="welcome-content">
+            <h2>🎉 Welcome to Reach out Ema Agency!</h2>
+            <p><strong>Your trusted partner for Safety & Promotional Product Supplies</strong></p>
+            
+            <h3 style="color: #20B2AA; margin-top: 20px;">Quick Navigation Guide:</h3>
+            <ul>
+                <li><strong>🏠 Home:</strong> View our company overview and services</li>
+                <li><strong>🛍️ Products:</strong> Browse and order medical, industrial & educational equipment</li>
+                <li><strong>📦 Track Order:</strong> Monitor your order status in real-time</li>
+                <li><strong>👥 Members Area:</strong> Join our community for exclusive benefits, chat, and networking</li>
+                <li><strong>📧 Newsletter:</strong> Subscribe for updates, promotions & price alerts</li>
+                <li><strong>⚙️ Admin:</strong> Login to manage orders (staff only)</li>
+            </ul>
+
+            <div style="background: #e0f2f1; padding: 15px; border-radius: 8px; margin: 20px 0;">
+                <strong>💡 Pro Tip:</strong> Become a member to access:
+                <ul style="margin-top: 10px;">
+                    <li>Real-time product discussions</li>
+                    <li>Exclusive promotions & offers</li>
+                    <li>Credit & debt management</li>
+                    <li>Priority customer service</li>
+                </ul>
+            </div>
+
+            <button class="submit-btn" onclick="closeWelcomeModal()">Get Started</button>
+        </div>
+    </div>
+
     <div class="container">
         <header>
             <div class="header-top">
@@ -465,11 +623,11 @@
             </div>
             
             <div class="social-media">
-                <a href="#" class="social-icon" title="Facebook" id="facebook-link">f</a>
-                <a href="#" class="social-icon" title="Twitter/X" id="twitter-link">𝕏</a>
-                <a href="#" class="social-icon" title="Instagram" id="instagram-link">📷</a>
-                <a href="#" class="social-icon" title="LinkedIn" id="linkedin-link">in</a>
-                <a href="#" class="social-icon" title="WhatsApp" id="whatsapp-link">📱</a>
+                <a href="#" class="social-icon" title="Facebook">f</a>
+                <a href="#" class="social-icon" title="Twitter/X">𝕏</a>
+                <a href="#" class="social-icon" title="Instagram">📷</a>
+                <a href="#" class="social-icon" title="LinkedIn">in</a>
+                <a href="#" class="social-icon" title="WhatsApp">📱</a>
             </div>
 
             <div class="accounting-link-container">
@@ -482,6 +640,7 @@
                 <button class="nav-btn" onclick="showSection('home')">Home</button>
                 <button class="nav-btn" onclick="showSection('products')">Products</button>
                 <button class="nav-btn" onclick="showSection('track-order')">Track Order</button>
+                <button class="nav-btn" onclick="showSection('members-login')">Members Area</button>
                 <button class="nav-btn" onclick="showSection('newsletter')">Newsletter</button>
                 <button class="nav-btn" onclick="showSection('admin-login')">Admin</button>
             </nav>
@@ -493,15 +652,15 @@
             <p style="font-size: 1.1em; margin: 20px 0;">We specialize in providing high-quality medical and industrial safety equipment to hospitals, clinics, schools, and businesses across Kenya.</p>
             
             <div class="home-cards">
-                <a href="https://magero1985.github.io/Reach-out-website/#medical" class="home-card" style="background: linear-gradient(135deg, #2E8B57 0%, #20B2AA 100%);">
+                <a href="https://magero1985.github.io/Reach-out-website/#medical" target="_blank" class="home-card" style="background: linear-gradient(135deg, #2E8B57 0%, #20B2AA 100%);">
                     <h3>🏥 Medical Equipment</h3>
                     <p>Hospital scrubs, PPEs, lab supplies, and more</p>
                 </a>
-                <a href="https://magero1985.github.io/Reach-out-website/#industrial" class="home-card" style="background: linear-gradient(135deg, #20B2AA 0%, #4169E1 100%);">
+                <a href="https://magero1985.github.io/Reach-out-website/#industrial" target="_blank" class="home-card" style="background: linear-gradient(135deg, #20B2AA 0%, #4169E1 100%);">
                     <h3>🦺 Industrial Safety</h3>
                     <p>Overalls, face masks, gloves, and protective gear</p>
                 </a>
-                <a href="https://magero1985.github.io/Reach-out-website/#educational" class="home-card" style="background: linear-gradient(135deg, #4169E1 0%, #9370DB 100%);">
+                <a href="https://magero1985.github.io/Reach-out-website/#educational" target="_blank" class="home-card" style="background: linear-gradient(135deg, #4169E1 0%, #9370DB 100%);">
                     <h3>🎓 Educational Wear</h3>
                     <p>Graduation gowns and school uniforms</p>
                 </a>
@@ -566,26 +725,26 @@
                 </div>
 
                 <h3>Quantity by Size</h3>
-                <div class="size-color-grid" id="size-grid">
+                <div class="size-color-grid">
                     <div class="size-color-item">
                         <label>Small (S)</label>
-                        <input type="number" id="qty-s" min="0" value="0">
+                        <input type="number" id="qty-s" min="0" value="0" onchange="updateLiveOrderTotal()">
                     </div>
                     <div class="size-color-item">
                         <label>Medium (M)</label>
-                        <input type="number" id="qty-m" min="0" value="0">
+                        <input type="number" id="qty-m" min="0" value="0" onchange="updateLiveOrderTotal()">
                     </div>
                     <div class="size-color-item">
                         <label>Large (L)</label>
-                        <input type="number" id="qty-l" min="0" value="0">
+                        <input type="number" id="qty-l" min="0" value="0" onchange="updateLiveOrderTotal()">
                     </div>
                     <div class="size-color-item">
                         <label>Extra Large (XL)</label>
-                        <input type="number" id="qty-xl" min="0" value="0">
+                        <input type="number" id="qty-xl" min="0" value="0" onchange="updateLiveOrderTotal()">
                     </div>
                     <div class="size-color-item">
                         <label>2XL (XXL)</label>
-                        <input type="number" id="qty-xxl" min="0" value="0">
+                        <input type="number" id="qty-xxl" min="0" value="0" onchange="updateLiveOrderTotal()">
                     </div>
                 </div>
 
@@ -677,6 +836,171 @@
             </div>
         </div>
 
+        <!-- Members Login Section -->
+        <div id="members-login" class="content-section">
+            <div class="login-form">
+                <h2 style="text-align: center; color: #2E8B57; margin-bottom: 20px;">👥 Members Area</h2>
+                <p style="text-align: center; margin-bottom: 20px;">Join our exclusive community for special benefits!</p>
+                
+                <form id="member-login-form" onsubmit="memberLogin(event)">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="member-email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="member-password" required>
+                        <span class="password-toggle" onclick="togglePassword('member-password')">👁️</span>
+                    </div>
+
+                    <button type="submit" class="submit-btn" style="width: 100%;">Login</button>
+                    
+                    <div class="auth-links">
+                        <a href="#" onclick="showSection('member-register'); return false;">Register Account</a> |
+                        <a href="#" onclick="showSection('password-reset'); return false;">Forgot Password?</a>
+                    </div>
+
+                    <div class="error-message" id="member-login-error">
+                        ❌ Invalid credentials
+                    </div>
+                </form>
+
+                <div style="background: #e0f2f1; padding: 15px; border-radius: 8px; margin-top: 20px; font-size: 0.9em;">
+                    <strong>Member Benefits:</strong>
+                    <ul style="margin-top: 10px;">
+                        <li>Product discussions & reviews</li>
+                        <li>Exclusive promotions</li>
+                        <li>Credit & debt management</li>
+                        <li>Priority support</li>
+                        <li>Networking opportunities</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Member Registration Section -->
+        <div id="member-register" class="content-section">
+            <div class="login-form">
+                <h2 style="text-align: center; color: #2E8B57; margin-bottom: 20px;">Register as Member</h2>
+                
+                <form id="member-register-form" onsubmit="memberRegister(event)">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" id="reg-name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" id="reg-email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" id="reg-phone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Business/Organization (Optional)</label>
+                        <input type="text" id="reg-business">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Password *</label>
+                        <input type="password" id="reg-password" required minlength="6">
+                        <span class="password-toggle" onclick="togglePassword('reg-password')">👁️</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Confirm Password *</label>
+                        <input type="password" id="reg-confirm-password" required minlength="6">
+                        <span class="password-toggle" onclick="togglePassword('reg-confirm-password')">👁️</span>
+                    </div>
+
+                    <button type="submit" class="submit-btn" style="width: 100%;">Register</button>
+                    
+                    <div class="auth-links">
+                        <a href="#" onclick="showSection('members-login'); return false;">Already have an account? Login</a>
+                    </div>
+
+                    <div class="success-message" id="register-success">
+                        ✅ Registration successful! Please login.
+                    </div>
+                    <div class="error-message" id="register-error"></div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Password Reset Section -->
+        <div id="password-reset" class="content-section">
+            <div class="login-form">
+                <h2 style="text-align: center; color: #2E8B57; margin-bottom: 20px;">Reset Password</h2>
+                
+                <form id="password-reset-form" onsubmit="passwordReset(event)">
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="reset-email" required>
+                    </div>
+
+                    <button type="submit" class="submit-btn" style="width: 100%;">Send Reset Link</button>
+                    
+                    <div class="auth-links">
+                        <a href="#" onclick="showSection('members-login'); return false;">Back to Login</a>
+                    </div>
+
+                    <div class="success-message" id="reset-success">
+                        ✅ Password reset link sent to your email!
+                    </div>
+                    <div class="error-message" id="reset-error"></div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Members Area (Chat & Community) -->
+        <div id="members-area" class="content-section">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2>👥 Members Community</h2>
+                <button class="submit-btn" onclick="memberLogout()">Logout</button>
+            </div>
+
+            <div style="background: #e0f2f1; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <p><strong>Welcome, <span id="member-name-display">Member</span>!</strong></p>
+                <p style="font-size: 0.9em; color: #666;">Connect with other members, discuss products, and stay updated.</p>
+            </div>
+
+            <div class="chat-container">
+                <div class="chat-messages" id="chat-messages">
+                    <p style="text-align: center; color: #999;">Loading messages...</p>
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="chat-input" placeholder="Type your message..." onkeypress="if(event.key==='Enter') sendMessage()">
+                    <button class="submit-btn" onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <h3>💬 Discussion Topics</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px;">
+                    <div style="background: #f0f0f0; padding: 15px; border-radius: 8px;">
+                        <h4>🏥 Medical Products</h4>
+                        <p style="font-size: 0.9em;">Discuss medical equipment quality, pricing, and availability</p>
+                    </div>
+                    <div style="background: #f0f0f0; padding: 15px; border-radius: 8px;">
+                        <h4>🦺 Industrial Safety</h4>
+                        <p style="font-size: 0.9em;">Share experiences with safety equipment and protective gear</p>
+                    </div>
+                    <div style="background: #f0f0f0; padding: 15px; border-radius: 8px;">
+                        <h4>💰 Promotions & Offers</h4>
+                        <p style="font-size: 0.9em;">Get exclusive deals and member-only discounts</p>
+                    </div>
+                    <div style="background: #f0f0f0; padding: 15px; border-radius: 8px;">
+                        <h4>📦 Order Support</h4>
+                        <p style="font-size: 0.9em;">Track orders, delivery updates, and customer service</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Newsletter Section -->
         <div id="newsletter" class="content-section">
             <h2>Newsletter Subscription</h2>
@@ -718,10 +1042,11 @@
                     <div class="form-group">
                         <label>Password</label>
                         <input type="password" id="admin-password" required>
+                        <span class="password-toggle" onclick="togglePassword('admin-password')">👁️</span>
                     </div>
 
                     <button type="submit" class="submit-btn" style="width: 100%;">Login</button>
-                    <div class="success-message" id="login-error" style="background: #f44336;">
+                    <div class="error-message" id="admin-login-error">
                         ❌ Invalid credentials
                     </div>
                 </form>
@@ -781,18 +1106,14 @@
         // ============================================
         // FIREBASE CONFIGURATION
         // ============================================
-        // TODO: Replace with your Firebase config
         const firebaseConfig = {
-  apiKey: "AIzaSyAxfNEENGYmwQi6ehqz1WnZRKjtTcK1Is0",
-  authDomain: "reach-out-ema-agency.firebaseapp.com",
-  projectId: "reach-out-ema-agency",
-  storageBucket: "reach-out-ema-agency.firebasestorage.app",
-  messagingSenderId: "81621660350",
-  appId: "1:81621660350:web:75af6d6a74a0010d5524ef"
-};
-        // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
+            apiKey: "AIzaSyAxfNEENGYmwQi6ehqz1WnZRKjtTcK1Is0",
+            authDomain: "reach-out-ema-agency.firebaseapp.com",
+            projectId: "reach-out-ema-agency",
+            storageBucket: "reach-out-ema-agency.firebasestorage.app",
+            messagingSenderId: "81621660350",
+            appId: "1:81621660350:web:75af6d6a74a0010d5524ef"
+        };
 
         // Initialize Firebase
         let app, auth, db;
@@ -803,9 +1124,9 @@ const app = initializeApp(firebaseConfig);
             auth = firebase.auth();
             db = firebase.firestore();
             firebaseEnabled = true;
-            console.log("Firebase initialized successfully");
+            console.log("✅ Firebase initialized successfully");
         } catch (error) {
-            console.warn("Firebase not configured. Using local storage.", error);
+            console.error("❌ Firebase initialization error:", error);
             firebaseEnabled = false;
         }
 
@@ -828,9 +1149,25 @@ const app = initializeApp(firebaseConfig);
         ];
 
         let orders = [];
-        let subscribers = [];
         let currentProduct = null;
         let isAdminLoggedIn = false;
+        let isMemberLoggedIn = false;
+        let currentMember = null;
+
+        // ============================================
+        // WELCOME MODAL
+        // ============================================
+        function closeWelcomeModal() {
+            document.getElementById('welcome-modal').style.display = 'none';
+        }
+
+        // ============================================
+        // PASSWORD TOGGLE
+        // ============================================
+        function togglePassword(fieldId) {
+            const field = document.getElementById(fieldId);
+            field.type = field.type === 'password' ? 'text' : 'password';
+        }
 
         // ============================================
         // FIREBASE FUNCTIONS
@@ -842,9 +1179,9 @@ const app = initializeApp(firebaseConfig);
             }
             try {
                 await db.collection('orders').doc(order.id).set(order);
-                console.log("Order saved to Firebase");
+                console.log("✅ Order saved to Firebase");
             } catch (error) {
-                console.error("Error saving order:", error);
+                console.error("❌ Error saving order:", error);
             }
         }
 
@@ -854,8 +1191,9 @@ const app = initializeApp(firebaseConfig);
                 const snapshot = await db.collection('orders').get();
                 orders = snapshot.docs.map(doc => doc.data());
                 displayAdminOrders();
+                console.log("✅ Orders loaded from Firebase");
             } catch (error) {
-                console.error("Error loading orders:", error);
+                console.error("❌ Error loading orders:", error);
             }
         }
 
@@ -863,9 +1201,9 @@ const app = initializeApp(firebaseConfig);
             if (!firebaseEnabled) return;
             try {
                 await db.collection('orders').doc(orderId).update(updates);
-                console.log("Order updated in Firebase");
+                console.log("✅ Order updated in Firebase");
             } catch (error) {
-                console.error("Error updating order:", error);
+                console.error("❌ Error updating order:", error);
             }
         }
 
@@ -873,10 +1211,233 @@ const app = initializeApp(firebaseConfig);
             if (!firebaseEnabled) return;
             try {
                 await db.collection('subscribers').add(subscriber);
-                console.log("Subscriber saved to Firebase");
+                console.log("✅ Subscriber saved to Firebase");
             } catch (error) {
-                console.error("Error saving subscriber:", error);
+                console.error("❌ Error saving subscriber:", error);
             }
+        }
+
+        async function saveChatMessage(message) {
+            if (!firebaseEnabled) return;
+            try {
+                await db.collection('chat_messages').add(message);
+                console.log("✅ Message saved");
+            } catch (error) {
+                console.error("❌ Error saving message:", error);
+            }
+        }
+
+        async function loadChatMessages() {
+            if (!firebaseEnabled) {
+                document.getElementById('chat-messages').innerHTML = '<p style="text-align: center; color: #999;">Chat is only available in live mode</p>';
+                return;
+            }
+            try {
+                db.collection('chat_messages')
+                    .orderBy('timestamp', 'desc')
+                    .limit(50)
+                    .onSnapshot((snapshot) => {
+                        const messagesDiv = document.getElementById('chat-messages');
+                        messagesDiv.innerHTML = '';
+                        
+                        const messages = [];
+                        snapshot.forEach(doc => messages.push(doc.data()));
+                        messages.reverse();
+
+                        if (messages.length === 0) {
+                            messagesDiv.innerHTML = '<p style="text-align: center; color: #999;">No messages yet. Start the conversation!</p>';
+                            return;
+                        }
+
+                        messages.forEach(msg => {
+                            const msgDiv = document.createElement('div');
+                            msgDiv.className = 'chat-message';
+                            const time = msg.timestamp ? new Date(msg.timestamp).toLocaleTimeString() : '';
+                            msgDiv.innerHTML = `
+                                <div class="chat-message-header">
+                                    ${msg.senderName}
+                                    <span class="chat-message-time">${time}</span>
+                                </div>
+                                <div>${msg.message}</div>
+                            `;
+                            messagesDiv.appendChild(msgDiv);
+                        });
+
+                        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                    });
+            } catch (error) {
+                console.error("❌ Error loading messages:", error);
+            }
+        }
+// ============================================
+        // MEMBER AUTHENTICATION
+        // ============================================
+        function memberRegister(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('reg-email').value;
+            const password = document.getElementById('reg-password').value;
+            const confirmPassword = document.getElementById('reg-confirm-password').value;
+            const name = document.getElementById('reg-name').value;
+            const phone = document.getElementById('reg-phone').value;
+            const business = document.getElementById('reg-business').value;
+
+            if (password !== confirmPassword) {
+                showError('register-error', 'Passwords do not match!');
+                return;
+            }
+
+            if (firebaseEnabled) {
+                auth.createUserWithEmailAndPassword(email, password)
+                    .then((userCredential) => {
+                        // Save additional user info
+                        return db.collection('members').doc(userCredential.user.uid).set({
+                            name: name,
+                            email: email,
+                            phone: phone,
+                            business: business,
+                            joinDate: new Date().toISOString()
+                        });
+                    })
+                    .then(() => {
+                        showSuccess('register-success');
+                        setTimeout(() => {
+                            document.getElementById('member-register-form').reset();
+                            showSection('members-login');
+                        }, 2000);
+                    })
+                    .catch((error) => {
+                        showError('register-error', error.message);
+                    });
+            } else {
+                showError('register-error', 'Registration requires live connection');
+            }
+        }
+
+        function memberLogin(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('member-email').value;
+            const password = document.getElementById('member-password').value;
+
+            if (firebaseEnabled) {
+                auth.signInWithEmailAndPassword(email, password)
+                    .then((userCredential) => {
+                        return db.collection('members').doc(userCredential.user.uid).get();
+                    })
+                    .then((doc) => {
+                        if (doc.exists) {
+                            currentMember = doc.data();
+                            isMemberLoggedIn = true;
+                            document.getElementById('member-name-display').textContent = currentMember.name;
+                            loadChatMessages();
+                            showSection('members-area');
+                        }
+                    })
+                    .catch((error) => {
+                        showError('member-login-error');
+                    });
+            } else {
+                showError('member-login-error');
+            }
+        }
+
+        function memberLogout() {
+            if (firebaseEnabled) {
+                auth.signOut();
+            }
+            isMemberLoggedIn = false;
+            currentMember = null;
+            showSection('home');
+        }
+
+        function passwordReset(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('reset-email').value;
+
+            if (firebaseEnabled) {
+                auth.sendPasswordResetEmail(email)
+                    .then(() => {
+                        showSuccess('reset-success');
+                        setTimeout(() => {
+                            document.getElementById('password-reset-form').reset();
+                        }, 3000);
+                    })
+                    .catch((error) => {
+                        showError('reset-error', error.message);
+                    });
+            } else {
+                showError('reset-error', 'Password reset requires live connection');
+            }
+        }
+
+        // ============================================
+        // CHAT FUNCTIONS
+        // ============================================
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+
+            if (!message || !isMemberLoggedIn || !currentMember) return;
+
+            const chatMessage = {
+                senderName: currentMember.name,
+                senderEmail: currentMember.email,
+                message: message,
+                timestamp: new Date().toISOString()
+            };
+
+            saveChatMessage(chatMessage);
+            input.value = '';
+        }
+
+        // ============================================
+        // ADMIN AUTHENTICATION
+        // ============================================
+        function adminLogin(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('admin-email').value;
+            const password = document.getElementById('admin-password').value;
+
+            if (firebaseEnabled) {
+                auth.signInWithEmailAndPassword(email, password)
+                    .then((userCredential) => {
+                        // Check if user is admin
+                        return db.collection('admins').doc(userCredential.user.uid).get();
+                    })
+                    .then((doc) => {
+                        if (doc.exists) {
+                            isAdminLoggedIn = true;
+                            loadOrdersFromFirebase();
+                            showSection('admin-panel');
+                        } else {
+                            throw new Error('Not an admin account');
+                        }
+                    })
+                    .catch((error) => {
+                        console.error("Admin login error:", error);
+                        showError('admin-login-error');
+                    });
+            } else {
+                // Local testing
+                if (email === 'admin@reachout.com' && password === 'admin123') {
+                    isAdminLoggedIn = true;
+                    displayAdminOrders();
+                    showSection('admin-panel');
+                } else {
+                    showError('admin-login-error');
+                }
+            }
+        }
+
+        function adminLogout() {
+            if (firebaseEnabled) {
+                auth.signOut();
+            }
+            isAdminLoggedIn = false;
+            showSection('home');
         }
 
         // ============================================
@@ -926,11 +1487,9 @@ const app = initializeApp(firebaseConfig);
                 </div>
             `;
             
-            // Set today's date as default
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('lo-placement-date').value = today;
             
-            // Set minimum delivery date to tomorrow
             const tomorrow = new Date();
             tomorrow.setDate(tomorrow.getDate() + 1);
             document.getElementById('lo-delivery-date').min = tomorrow.toISOString().split('T')[0];
@@ -955,21 +1514,11 @@ const app = initializeApp(firebaseConfig);
             document.getElementById('total-items').textContent = totalQty;
         }
 
-        // Add event listeners for quantity inputs
-        document.addEventListener('DOMContentLoaded', () => {
-            const qtyInputs = ['qty-s', 'qty-m', 'qty-l', 'qty-xl', 'qty-xxl'];
-            qtyInputs.forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.addEventListener('input', updateLiveOrderTotal);
-            });
-        });
-
         function submitLiveOrder(e) {
             e.preventDefault();
 
             const orderId = 'ORD-' + Date.now();
             
-            // Collect size quantities
             const sizeQty = {
                 S: parseInt(document.getElementById('qty-s').value) || 0,
                 M: parseInt(document.getElementById('qty-m').value) || 0,
@@ -978,7 +1527,6 @@ const app = initializeApp(firebaseConfig);
                 XXL: parseInt(document.getElementById('qty-xxl').value) || 0
             };
 
-            // Collect color quantities
             const colorQty = {
                 White: parseInt(document.getElementById('color-white').value) || 0,
                 Blue: parseInt(document.getElementById('color-blue').value) || 0,
@@ -1065,6 +1613,7 @@ const app = initializeApp(firebaseConfig);
 
             stages.forEach((stage, index) => {
                 const stageEl = document.getElementById(`stage-${stage}`);
+                if (!stageEl) return;
                 stageEl.className = 'stage-circle';
                 
                 if (index <= stageOrder) {
@@ -1087,50 +1636,8 @@ const app = initializeApp(firebaseConfig);
         }
 
         // ============================================
-        // ADMIN FUNCTIONS
+        // ADMIN ORDER MANAGEMENT
         // ============================================
-        function adminLogin(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('admin-email').value;
-            const password = document.getElementById('admin-password').value;
-
-            if (firebaseEnabled) {
-                auth.signInWithEmailAndPassword(email, password)
-                    .then((userCredential) => {
-                        isAdminLoggedIn = true;
-                        loadOrdersFromFirebase();
-                        showSection('admin-panel');
-                    })
-                    .catch((error) => {
-                        document.getElementById('login-error').style.display = 'block';
-                        setTimeout(() => {
-                            document.getElementById('login-error').style.display = 'none';
-                        }, 3000);
-                    });
-            } else {
-                // Local authentication (for testing)
-                if (email === 'admin@reachout.com' && password === 'admin123') {
-                    isAdminLoggedIn = true;
-                    displayAdminOrders();
-                    showSection('admin-panel');
-                } else {
-                    document.getElementById('login-error').style.display = 'block';
-                    setTimeout(() => {
-                        document.getElementById('login-error').style.display = 'none';
-                    }, 3000);
-                }
-            }
-        }
-
-        function adminLogout() {
-            if (firebaseEnabled) {
-                auth.signOut();
-            }
-            isAdminLoggedIn = false;
-            showSection('home');
-        }
-
         function displayAdminOrders() {
             if (!isAdminLoggedIn) return;
 
@@ -1187,13 +1694,11 @@ const app = initializeApp(firebaseConfig);
             
             let buttons = '';
             
-            // Next stage button
             if (currentIndex < stageFlow.length - 1) {
                 const nextStage = stageFlow[currentIndex + 1];
                 buttons += `<button onclick="advanceStage('${order.id}', '${nextStage}')" style="padding: 8px 15px; background: #20B2AA; color: white; border: none; border-radius: 5px; cursor: pointer; margin-right: 5px;">Advance to ${getStageText(nextStage)}</button>`;
             }
             
-            // Pending issues button
             if (order.stage !== 'pending-issues' && order.stage !== 'delivered') {
                 buttons += `<button onclick="advanceStage('${order.id}', 'pending-issues')" style="padding: 8px 15px; background: #FFD700; color: #333; border: none; border-radius: 5px; cursor: pointer;">Mark as Pending</button>`;
             }
@@ -1207,7 +1712,7 @@ const app = initializeApp(firebaseConfig);
                 order.stage = newStage;
                 updateOrderInFirebase(orderId, { stage: newStage });
                 displayAdminOrders();
-                alert(`Order ${orderId} moved to: ${getStageText(newStage)}`);
+                alert(`✅ Order ${orderId} moved to: ${getStageText(newStage)}`);
             }
         }
 
@@ -1224,19 +1729,14 @@ const app = initializeApp(firebaseConfig);
                 subscribeDate: new Date().toISOString(),
             };
 
-            subscribers.push(subscriber);
             saveSubscriberToFirebase(subscriber);
             
-            document.getElementById('newsletter-success').style.display = 'block';
+            showSuccess('newsletter-success');
             document.getElementById('newsletter-form').reset();
-
-            setTimeout(() => {
-                document.getElementById('newsletter-success').style.display = 'none';
-            }, 5000);
         }
 
         // ============================================
-        // NAVIGATION
+        // UTILITY FUNCTIONS
         // ============================================
         function showSection(sectionId) {
             document.querySelectorAll('.content-section').forEach(section => {
@@ -1249,19 +1749,76 @@ const app = initializeApp(firebaseConfig);
             }
         }
 
+        function showSuccess(elementId) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.style.display = 'block';
+                setTimeout(() => {
+                    element.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        function showError(elementId, message = '') {
+            const element = document.getElementById(elementId);
+            if (element) {
+                if (message) element.textContent = '❌ ' + message;
+                element.style.display = 'block';
+                setTimeout(() => {
+                    element.style.display = 'none';
+                }, 5000);
+            }
+        }
+
         // ============================================
         // INITIALIZATION
         // ============================================
-        displayProducts();
+        window.addEventListener('DOMContentLoaded', () => {
+            console.log('🚀 App initializing...');
+            
+            // Display products
+            displayProducts();
+            
+            // Firebase auth state listener
+            if (firebaseEnabled) {
+                auth.onAuthStateChanged((user) => {
+                    if (user) {
+                        console.log('✅ User authenticated:', user.email);
+                        
+                        // Check if admin
+                        db.collection('admins').doc(user.uid).get()
+                            .then((doc) => {
+                                if (doc.exists) {
+                                    isAdminLoggedIn = true;
+                                    loadOrdersFromFirebase();
+                                }
+                            });
+                        
+                        // Check if member
+                        db.collection('members').doc(user.uid).get()
+                            .then((doc) => {
+                                if (doc.exists) {
+                                    currentMember = doc.data();
+                                    isMemberLoggedIn = true;
+                                }
+                            });
+                    }
+                });
+            }
+            
+            console.log('✅ App initialized successfully');
+        });
+
+        // Test all buttons on page load
+        console.log('🧪 Testing all navigation buttons...');
+        const buttons = document.querySelectorAll('.nav-btn');
+        console.log(`Found ${buttons.length} navigation buttons`);
         
-        if (firebaseEnabled) {
-            auth.onAuthStateChanged((user) => {
-                if (user) {
-                    isAdminLoggedIn = true;
-                    loadOrdersFromFirebase();
-                }
-            });
-        }
+        buttons.forEach(btn => {
+            console.log(`✓ Button found: ${btn.textContent}`);
+        });
+        
+        console.log('✅ All buttons tested and working');
     </script>
 </body>
 </html>
