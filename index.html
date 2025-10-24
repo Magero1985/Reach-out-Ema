@@ -3,105 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reach out Ema Agency - Medical & Industrial Safety Equipment</title>
+    <meta name="theme-color" content="#2E8B57">
+    <meta name="description" content="Reach out Ema Agency - Specialist in Safety & Promotional Product Supplies">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <title>Reach out Ema Agency</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
             background: linear-gradient(135deg, #2E8B57 0%, #20B2AA 50%, #4169E1 100%);
             min-height: 100vh;
+            padding-bottom: 20px;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
+        .container { max-width: 1200px; margin: 0 auto; padding: 10px; }
         header {
             background: rgba(255, 255, 255, 0.98);
-            padding: 25px;
+            padding: 20px;
             border-radius: 15px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
-
-        .header-top {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
+        .header-top { text-align: center; margin-bottom: 15px; }
         h1 {
             background: linear-gradient(135deg, #FFD700, #FFA500, #FF8C00);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            font-size: 2.5em;
+            font-size: 1.8em;
             margin-bottom: 5px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
             font-weight: 900;
         }
-
         .specialist-tagline {
             color: #20B2AA;
             font-weight: bold;
-            font-size: 1.1em;
-            margin: 10px 0;
+            font-size: 0.95em;
+            margin: 8px 0;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-
         .company-info {
             color: #666;
-            font-size: 0.9em;
-            line-height: 1.8;
-            margin-top: 10px;
+            font-size: 0.85em;
+            line-height: 1.6;
+            margin-top: 8px;
         }
-
-        .company-info strong {
-            color: #2E8B57;
-        }
-
-        .accounting-link-container {
-            text-align: center;
-            margin: 15px 0;
-        }
-
+        .company-info strong { color: #2E8B57; }
+        .accounting-link-container { text-align: center; margin: 12px 0; }
         .accounting-link {
             background: #40E0D0;
             color: white;
-            padding: 8px 20px;
+            padding: 8px 16px;
             border-radius: 20px;
             text-decoration: none;
             font-weight: bold;
             display: inline-block;
             transition: transform 0.3s;
-            font-size: 0.9em;
+            font-size: 0.85em;
         }
-
-        .accounting-link:hover {
-            transform: scale(1.05);
-            background: #20B2AA;
-        }
-
+        .accounting-link:hover { transform: scale(1.05); background: #20B2AA; }
         .social-media {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin: 15px 0;
+            gap: 12px;
+            margin: 12px 0;
+            flex-wrap: wrap;
         }
-
         .social-icon {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             background: linear-gradient(135deg, #2E8B57, #20B2AA);
             color: white;
@@ -111,130 +84,134 @@
             text-decoration: none;
             font-weight: bold;
             transition: transform 0.3s;
+            font-size: 0.9em;
         }
-
-        .social-icon:hover {
-            transform: scale(1.15);
-        }
-
+        .social-icon:hover { transform: scale(1.15); }
         nav {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 15px;
         }
-
         .nav-btn {
             background: linear-gradient(135deg, #2E8B57 0%, #20B2AA 100%);
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 16px;
             border-radius: 25px;
             cursor: pointer;
             font-weight: bold;
             transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            font-size: 0.9em;
         }
-
+        .nav-btn:active { transform: scale(0.95); }
         .nav-btn:hover {
-            transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             background: linear-gradient(135deg, #20B2AA 0%, #4169E1 100%);
         }
-
+        .nav-tooltip {
+            position: absolute;
+            bottom: 120%;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.75em;
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 1000;
+            transition: transform 0.3s, opacity 0.3s;
+            opacity: 0;
+            max-width: 200px;
+            white-space: normal;
+            text-align: center;
+        }
+        .nav-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 5px solid transparent;
+            border-top-color: rgba(0, 0, 0, 0.9);
+        }
+        .nav-btn.show-tooltip .nav-tooltip {
+            transform: translateX(-50%) scale(1);
+            opacity: 1;
+        }
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            left: 20px;
+            padding: 15px 20px;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            z-index: 10000;
+            animation: slideInDown 0.3s, fadeOut 0.3s 2.7s;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .notification.success { background: linear-gradient(135deg, #4caf50, #45a049); }
+        .notification.error { background: linear-gradient(135deg, #f44336, #da190b); }
+        .notification.info { background: linear-gradient(135deg, #2196F3, #0b7dda); }
+        @keyframes slideInDown {
+            from { transform: translateY(-100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
         .content-section {
             background: white;
-            padding: 30px;
+            padding: 20px;
             border-radius: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             display: none;
         }
-
         .content-section.active {
             display: block;
             animation: fadeIn 0.5s;
         }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        .welcome-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-        }
-
-        .welcome-content {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            max-width: 600px;
-            max-height: 80vh;
-            overflow-y: auto;
-            text-align: center;
-            animation: slideIn 0.5s;
-        }
-
-        @keyframes slideIn {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        .welcome-content h2 {
-            color: #2E8B57;
-            margin-bottom: 20px;
-        }
-
-        .welcome-content ul {
-            text-align: left;
-            margin: 20px 0;
-            line-height: 2;
-        }
-
-        .welcome-content ul li {
-            margin-bottom: 10px;
-        }
-
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
         }
-
         .product-card {
             border: 2px solid #e0e0e0;
             border-radius: 10px;
-            padding: 20px;
+            padding: 15px;
             transition: transform 0.3s, box-shadow 0.3s;
         }
-
         .product-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 5px 20px rgba(46, 139, 87, 0.4);
         }
-
         .product-card h3 {
             color: #2E8B57;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            font-size: 1.1em;
         }
-
+        .product-card p { font-size: 0.9em; color: #666; }
         .product-price {
-            font-size: 1.5em;
+            font-size: 1.3em;
             color: #20B2AA;
             font-weight: bold;
             margin: 10px 0;
         }
-
         .update-order-btn {
             background: linear-gradient(135deg, #2E8B57, #20B2AA);
             color: white;
@@ -246,369 +223,267 @@
             font-weight: bold;
             transition: background 0.3s;
         }
-
         .update-order-btn:hover {
             background: linear-gradient(135deg, #20B2AA, #4169E1);
         }
-
-        .form-group {
-            margin-bottom: 20px;
-            position: relative;
-        }
-
+        .form-group { margin-bottom: 15px; position: relative; }
         label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
             color: #2E8B57;
+            font-size: 0.9em;
         }
-
         input, select, textarea {
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             border: 2px solid #e0e0e0;
             border-radius: 8px;
-            font-size: 1em;
+            font-size: 0.95em;
             transition: border-color 0.3s;
         }
-
         input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: #20B2AA;
         }
-
         .password-toggle {
             position: absolute;
             right: 12px;
-            top: 38px;
+            top: 36px;
             cursor: pointer;
             color: #666;
             user-select: none;
         }
-
         .submit-btn {
             background: linear-gradient(135deg, #2E8B57 0%, #20B2AA 100%);
             color: white;
             border: none;
-            padding: 15px 40px;
+            padding: 12px 30px;
             border-radius: 25px;
             cursor: pointer;
-            font-size: 1.1em;
+            font-size: 1em;
             font-weight: bold;
             transition: transform 0.3s;
+            width: 100%;
         }
-
         .submit-btn:hover {
-            transform: scale(1.05);
+            transform: scale(1.02);
             background: linear-gradient(135deg, #20B2AA, #4169E1);
         }
-
-        .success-message, .error-message {
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
-            display: none;
-        }
-
-        .success-message {
-            background: #4caf50;
-            color: white;
-        }
-
-        .error-message {
-            background: #f44336;
-            color: white;
-        }
-
         .category-tabs {
             display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 8px;
+            margin-bottom: 15px;
             flex-wrap: wrap;
+            overflow-x: auto;
         }
-
         .category-tab {
             background: #f0f0f0;
             border: none;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 20px;
             cursor: pointer;
             transition: background 0.3s;
+            font-size: 0.85em;
+            white-space: nowrap;
         }
-
         .category-tab.active {
             background: linear-gradient(135deg, #2E8B57, #20B2AA);
             color: white;
         }
-
         .admin-panel {
             background: #e0f2f1;
-            padding: 20px;
+            padding: 15px;
             border-radius: 10px;
-            margin-top: 20px;
+            margin-top: 15px;
             border-left: 4px solid #20B2AA;
         }
-
         .order-item {
             background: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            border-left: 4px solid #2E8B57;
-        }
-
-        .size-color-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin: 15px 0;
-        }
-
-        .size-color-item {
-            border: 2px solid #e0e0e0;
             padding: 15px;
             border-radius: 8px;
+            margin-bottom: 12px;
+            border-left: 4px solid #2E8B57;
+            font-size: 0.9em;
         }
-
+        .size-color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px;
+            margin: 12px 0;
+        }
+        .size-color-item {
+            border: 2px solid #e0e0e0;
+            padding: 12px;
+            border-radius: 8px;
+        }
         .size-color-item input[type="number"] {
             width: 100%;
             margin-top: 5px;
         }
-
         .order-tracking-stages {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin: 30px 0;
+            margin: 20px 0;
             position: relative;
             flex-wrap: wrap;
+            gap: 10px;
         }
-
-        .tracking-line {
-            position: absolute;
-            top: 30px;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: #e0e0e0;
-            z-index: 1;
-        }
-
         .tracking-stage {
             text-align: center;
             flex: 1;
-            min-width: 120px;
+            min-width: 80px;
             position: relative;
             z-index: 2;
-            margin-bottom: 20px;
         }
-
         .stage-circle {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            margin: 0 auto 10px;
+            margin: 0 auto 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            border: 4px solid #e0e0e0;
+            border: 3px solid #e0e0e0;
             background: white;
-            font-size: 0.9em;
+            font-size: 0.8em;
         }
-
-        .stage-circle.placed {
-            background: #2E8B57;
-            border-color: #2E8B57;
-            color: white;
-        }
-
-        .stage-circle.received {
-            background: #20B2AA;
-            border-color: #20B2AA;
-            color: white;
-        }
-
-        .stage-circle.pending-issues {
-            background: #FFD700;
-            border-color: #FFD700;
-            color: #333;
-        }
-
-        .stage-circle.processing {
-            background: #4169E1;
-            border-color: #4169E1;
-            color: white;
-        }
-
-        .stage-circle.packaging {
-            background: #9370DB;
-            border-color: #9370DB;
-            color: white;
-        }
-
-        .stage-circle.delivering {
-            background: #FF8C00;
-            border-color: #FF8C00;
-            color: white;
-        }
-
-        .stage-circle.delivered {
-            background: #32CD32;
-            border-color: #32CD32;
-            color: white;
-        }
-
+        .stage-circle.placed { background: #2E8B57; border-color: #2E8B57; color: white; }
+        .stage-circle.received { background: #20B2AA; border-color: #20B2AA; color: white; }
+        .stage-circle.pending-issues { background: #FFD700; border-color: #FFD700; color: #333; }
+        .stage-circle.processing { background: #4169E1; border-color: #4169E1; color: white; }
+        .stage-circle.packaging { background: #9370DB; border-color: #9370DB; color: white; }
+        .stage-circle.delivering { background: #FF8C00; border-color: #FF8C00; color: white; }
+        .stage-circle.delivered { background: #32CD32; border-color: #32CD32; color: white; }
         .stage-label {
-            font-size: 0.85em;
+            font-size: 0.75em;
             font-weight: bold;
             margin-top: 5px;
         }
-
         .home-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
         }
-
         .home-card {
             color: white;
-            padding: 30px;
+            padding: 25px 15px;
             border-radius: 15px;
             text-decoration: none;
             transition: transform 0.3s;
             text-align: center;
         }
-
-        .home-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .home-card h3 {
-            margin-bottom: 10px;
-        }
-
+        .home-card:hover { transform: translateY(-5px); }
+        .home-card h3 { margin-bottom: 10px; font-size: 1.1em; }
+        .home-card p { font-size: 0.9em; }
         .login-form {
             max-width: 400px;
-            margin: 50px auto;
-            padding: 30px;
+            margin: 20px auto;
+            padding: 25px;
             background: white;
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
         }
-
-        .auth-links {
-            text-align: center;
-            margin-top: 15px;
-        }
-
+        .auth-links { text-align: center; margin-top: 12px; }
         .auth-links a {
             color: #2E8B57;
             text-decoration: none;
-            margin: 0 10px;
-            font-size: 0.9em;
+            margin: 0 8px;
+            font-size: 0.85em;
         }
-
-        .auth-links a:hover {
-            text-decoration: underline;
-        }
-
+        .auth-links a:hover { text-decoration: underline; }
         .chat-container {
             border: 2px solid #e0e0e0;
             border-radius: 10px;
-            height: 400px;
+            height: 350px;
             display: flex;
             flex-direction: column;
-            margin-top: 20px;
+            margin-top: 15px;
         }
-
         .chat-messages {
             flex: 1;
             overflow-y: auto;
-            padding: 20px;
+            padding: 15px;
             background: #f9f9f9;
         }
-
         .chat-message {
             background: white;
-            padding: 10px 15px;
+            padding: 10px 12px;
             border-radius: 8px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-size: 0.9em;
         }
-
         .chat-message-header {
             font-weight: bold;
             color: #2E8B57;
-            font-size: 0.9em;
-            margin-bottom: 5px;
+            font-size: 0.85em;
+            margin-bottom: 4px;
         }
-
         .chat-message-time {
-            font-size: 0.75em;
+            font-size: 0.7em;
             color: #999;
-            margin-left: 10px;
+            margin-left: 8px;
         }
-
         .chat-input-area {
             display: flex;
-            padding: 15px;
+            padding: 12px;
             background: white;
             border-top: 2px solid #e0e0e0;
+            gap: 8px;
         }
-
-        .chat-input-area input {
-            flex: 1;
-            margin-right: 10px;
+        .chat-input-area input { flex: 1; }
+        .chat-input-area button { width: auto; padding: 10px 20px; }
+        .info-box {
+            background: #e0f2f1;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #20B2AA;
         }
-
+        .referral-section {
+            background: linear-gradient(135deg, #2E8B57, #20B2AA);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            margin-top: 20px;
+        }
+        .referral-section h3 { color: white; margin-bottom: 12px; }
+        .referral-link-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+        .referral-link-box input {
+            background: white;
+            color: #333;
+            margin-top: 8px;
+        }
+        .copy-btn {
+            background: white;
+            color: #2E8B57;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 8px;
+            width: 100%;
+        }
         @media (max-width: 768px) {
-            h1 {
-                font-size: 1.8em;
-            }
-
-            .order-tracking-stages {
-                flex-direction: column;
-            }
-
-            .tracking-line {
-                display: none;
-            }
+            h1 { font-size: 1.5em; }
+            .nav-btn { font-size: 0.85em; padding: 10px 12px; }
+            .products-grid { grid-template-columns: 1fr; }
+            .order-tracking-stages { flex-direction: column; }
+            .notification { right: 10px; left: 10px; }
         }
     </style>
 </head>
 <body>
-    <!-- Welcome Modal -->
-    <div id="welcome-modal" class="welcome-modal">
-        <div class="welcome-content">
-            <h2>🎉 Welcome to Reach out Ema Agency!</h2>
-            <p><strong>Your trusted partner for Safety & Promotional Product Supplies</strong></p>
-            
-            <h3 style="color: #20B2AA; margin-top: 20px;">Quick Navigation Guide:</h3>
-            <ul>
-                <li><strong>🏠 Home:</strong> View our company overview and services</li>
-                <li><strong>🛍️ Products:</strong> Browse and order medical, industrial & educational equipment</li>
-                <li><strong>📦 Track Order:</strong> Monitor your order status in real-time</li>
-                <li><strong>👥 Members Area:</strong> Join our community for exclusive benefits, chat, and networking</li>
-                <li><strong>📧 Newsletter:</strong> Subscribe for updates, promotions & price alerts</li>
-                <li><strong>⚙️ Admin:</strong> Login to manage orders (staff only)</li>
-            </ul>
-
-            <div style="background: #e0f2f1; padding: 15px; border-radius: 8px; margin: 20px 0;">
-                <strong>💡 Pro Tip:</strong> Become a member to access:
-                <ul style="margin-top: 10px;">
-                    <li>Real-time product discussions</li>
-                    <li>Exclusive promotions & offers</li>
-                    <li>Credit & debt management</li>
-                    <li>Priority customer service</li>
-                </ul>
-            </div>
-
-            <button class="submit-btn" onclick="closeWelcomeModal()">Get Started</button>
-        </div>
-    </div>
-
     <div class="container">
         <header>
             <div class="header-top">
@@ -616,7 +491,7 @@
                 <p class="specialist-tagline">Specialist in Safety & Promotional Product Supplies</p>
                 <div class="company-info">
                     <strong>Registered Company</strong><br>
-                    P.O.Box 9424-00200, Uhuru Market, Nairobi, Kenya<br>
+                    P.O.Box 9424-00200, Nairobi, Kenya<br>
                     📧 Eunicelarry@yahoo.com<br>
                     📞 +254721634476 | +254725646331
                 </div>
@@ -637,56 +512,71 @@
             </div>
 
             <nav>
-                <button class="nav-btn" onclick="showSection('home')">Home</button>
-                <button class="nav-btn" onclick="showSection('products')">Products</button>
-                <button class="nav-btn" onclick="showSection('track-order')">Track Order</button>
-                <button class="nav-btn" onclick="showSection('members-login')">Members Area</button>
-                <button class="nav-btn" onclick="showSection('newsletter')">Newsletter</button>
-                <button class="nav-btn" onclick="showSection('admin-login')">Admin</button>
+                <button class="nav-btn" onclick="handleNavClick(event, 'home')">
+                    Home
+                    <span class="nav-tooltip">View our company overview and services</span>
+                </button>
+                <button class="nav-btn" onclick="handleNavClick(event, 'products')">
+                    Products
+                    <span class="nav-tooltip">Browse and order equipment</span>
+                </button>
+                <button class="nav-btn" onclick="handleNavClick(event, 'track-order')">
+                    Track Order
+                    <span class="nav-tooltip">Monitor your order status</span>
+                </button>
+                <button class="nav-btn" onclick="handleNavClick(event, 'members-login')">
+                    Members
+                    <span class="nav-tooltip">Join our community</span>
+                </button>
+                <button class="nav-btn" onclick="handleNavClick(event, 'newsletter')">
+                    Newsletter
+                    <span class="nav-tooltip">Subscribe for updates</span>
+                </button>
+                <button class="nav-btn" onclick="handleNavClick(event, 'admin-login')">
+                    Admin
+                    <span class="nav-tooltip">Staff login</span>
+                </button>
             </nav>
         </header>
 
-        <!-- Home Section -->
         <div id="home" class="content-section active">
             <h2>Welcome to Reach out Ema Agency</h2>
-            <p style="font-size: 1.1em; margin: 20px 0;">We specialize in providing high-quality medical and industrial safety equipment to hospitals, clinics, schools, and businesses across Kenya.</p>
+            <p style="font-size: 1em; margin: 15px 0;">We specialize in providing high-quality medical and industrial safety equipment to hospitals, clinics, schools, and businesses across Kenya.</p>
             
             <div class="home-cards">
                 <a href="https://magero1985.github.io/Reach-out-website/#medical" target="_blank" class="home-card" style="background: linear-gradient(135deg, #2E8B57 0%, #20B2AA 100%);">
                     <h3>🏥 Medical Equipment</h3>
-                    <p>Hospital scrubs, PPEs, lab supplies, and more</p>
+                    <p>Hospital scrubs, PPEs, lab supplies</p>
                 </a>
                 <a href="https://magero1985.github.io/Reach-out-website/#industrial" target="_blank" class="home-card" style="background: linear-gradient(135deg, #20B2AA 0%, #4169E1 100%);">
                     <h3>🦺 Industrial Safety</h3>
-                    <p>Overalls, face masks, gloves, and protective gear</p>
+                    <p>Overalls, masks, gloves, protective gear</p>
                 </a>
                 <a href="https://magero1985.github.io/Reach-out-website/#educational" target="_blank" class="home-card" style="background: linear-gradient(135deg, #4169E1 0%, #9370DB 100%);">
                     <h3>🎓 Educational Wear</h3>
-                    <p>Graduation gowns and school uniforms</p>
+                    <p>Graduation gowns and uniforms</p>
                 </a>
             </div>
 
-            <div style="background: #e0f2f1; padding: 20px; border-radius: 10px; margin-top: 30px; border-left: 4px solid #20B2AA;">
+            <div class="info-box">
                 <h3>🚚 Free Delivery in Nairobi</h3>
                 <p>We offer free delivery within Nairobi or at costs equivalent to shop pickup for other locations!</p>
             </div>
         </div>
 
-        <!-- Products Section -->
         <div id="products" class="content-section">
             <h2>Our Products</h2>
             
             <div class="category-tabs">
-                <button class="category-tab active" onclick="filterProducts('all')">All Products</button>
-                <button class="category-tab" onclick="filterProducts('medical')">Medical Equipment</button>
-                <button class="category-tab" onclick="filterProducts('industrial')">Industrial Safety</button>
-                <button class="category-tab" onclick="filterProducts('educational')">Educational Wear</button>
+                <button class="category-tab active" onclick="filterProducts('all', event)">All Products</button>
+                <button class="category-tab" onclick="filterProducts('medical', event)">Medical</button>
+                <button class="category-tab" onclick="filterProducts('industrial', event)">Industrial</button>
+                <button class="category-tab" onclick="filterProducts('educational', event)">Educational</button>
             </div>
 
             <div class="products-grid" id="products-grid"></div>
         </div>
 
-        <!-- Live Order Form Section -->
         <div id="live-order" class="content-section">
             <h2>📋 Live Order Form</h2>
             <div id="product-order-details"></div>
@@ -697,20 +587,17 @@
                     <label>Full Name *</label>
                     <input type="text" id="lo-customer-name" required>
                 </div>
-
                 <div class="form-group">
                     <label>Email Address *</label>
                     <input type="email" id="lo-customer-email" required>
                 </div>
-
                 <div class="form-group">
                     <label>Phone Number *</label>
                     <input type="tel" id="lo-customer-phone" required>
                 </div>
-
                 <div class="form-group">
                     <label>Delivery Address *</label>
-                    <textarea id="lo-delivery-address" rows="3" required></textarea>
+                    <textarea id="lo-delivery-address" rows="2" required></textarea>
                 </div>
 
                 <h3>Order Dates</h3>
@@ -718,7 +605,6 @@
                     <label>Order Placement Date *</label>
                     <input type="date" id="lo-placement-date" required>
                 </div>
-
                 <div class="form-group">
                     <label>Expected Delivery/Pickup Date *</label>
                     <input type="date" id="lo-delivery-date" required>
@@ -739,11 +625,11 @@
                         <input type="number" id="qty-l" min="0" value="0" onchange="updateLiveOrderTotal()">
                     </div>
                     <div class="size-color-item">
-                        <label>Extra Large (XL)</label>
+                        <label>XL</label>
                         <input type="number" id="qty-xl" min="0" value="0" onchange="updateLiveOrderTotal()">
                     </div>
                     <div class="size-color-item">
-                        <label>2XL (XXL)</label>
+                        <label>2XL</label>
                         <input type="number" id="qty-xxl" min="0" value="0" onchange="updateLiveOrderTotal()">
                     </div>
                 </div>
@@ -774,19 +660,18 @@
 
                 <div class="form-group">
                     <label>Special Instructions</label>
-                    <textarea id="lo-special-instructions" rows="3"></textarea>
+                    <textarea id="lo-special-instructions" rows="2"></textarea>
                 </div>
 
-                <div style="background: #e0f2f1; padding: 15px; border-radius: 8px; margin: 20px 0;">
+                <div class="info-box">
                     <h3>Estimated Total: KES <span id="live-order-total">0</span></h3>
-                    <p style="font-size: 0.9em; color: #666;">Total items: <span id="total-items">0</span></p>
+                    <p style="font-size: 0.9em;">Total items: <span id="total-items">0</span></p>
                 </div>
 
                 <button type="submit" class="submit-btn">Submit Order</button>
             </form>
         </div>
 
-        <!-- Track Order Section -->
         <div id="track-order" class="content-section">
             <h2>Track Your Order</h2>
             
@@ -797,23 +682,22 @@
             </div>
 
             <div id="tracking-result" style="display: none;">
-                <div style="background: #e0f2f1; padding: 20px; border-radius: 10px;">
+                <div class="info-box">
                     <h3>Order Status</h3>
                     <div id="order-info"></div>
                     
                     <div class="order-tracking-stages">
-                        <div class="tracking-line"></div>
                         <div class="tracking-stage">
                             <div class="stage-circle" id="stage-placed">📝</div>
-                            <div class="stage-label">Order Placed</div>
+                            <div class="stage-label">Placed</div>
                         </div>
                         <div class="tracking-stage">
                             <div class="stage-circle" id="stage-received">📥</div>
-                            <div class="stage-label">Order Received</div>
+                            <div class="stage-label">Received</div>
                         </div>
                         <div class="tracking-stage">
                             <div class="stage-circle" id="stage-pending">⚠️</div>
-                            <div class="stage-label">Pending Issues</div>
+                            <div class="stage-label">Pending</div>
                         </div>
                         <div class="tracking-stage">
                             <div class="stage-circle" id="stage-processing">⚙️</div>
@@ -836,276 +720,212 @@
             </div>
         </div>
 
-        <!-- Members Login Section -->
         <div id="members-login" class="content-section">
             <div class="login-form">
-                <h2 style="text-align: center; color: #2E8B57; margin-bottom: 20px;">👥 Members Area</h2>
-                <p style="text-align: center; margin-bottom: 20px;">Join our exclusive community for special benefits!</p>
+                <h2 style="text-align: center; color: #2E8B57; margin-bottom: 15px;">👥 Members Area</h2>
+                <p style="text-align: center; margin-bottom: 15px; font-size: 0.9em;">Join our exclusive community!</p>
                 
                 <form id="member-login-form" onsubmit="memberLogin(event)">
                     <div class="form-group">
                         <label>Email</label>
                         <input type="email" id="member-email" required>
                     </div>
-
                     <div class="form-group">
                         <label>Password</label>
                         <input type="password" id="member-password" required>
                         <span class="password-toggle" onclick="togglePassword('member-password')">👁️</span>
                     </div>
-
-                    <button type="submit" class="submit-btn" style="width: 100%;">Login</button>
-                    
+                    <button type="submit" class="submit-btn">Login</button>
                     <div class="auth-links">
-                        <a href="#" onclick="showSection('member-register'); return false;">Register Account</a> |
+                        <a href="#" onclick="showSection('member-register'); return false;">Register</a> |
                         <a href="#" onclick="showSection('password-reset'); return false;">Forgot Password?</a>
-                    </div>
-
-                    <div class="error-message" id="member-login-error">
-                        ❌ Invalid credentials
                     </div>
                 </form>
 
-                <div style="background: #e0f2f1; padding: 15px; border-radius: 8px; margin-top: 20px; font-size: 0.9em;">
+                <div class="info-box" style="margin-top: 15px; font-size: 0.85em;">
                     <strong>Member Benefits:</strong>
-                    <ul style="margin-top: 10px;">
-                        <li>Product discussions & reviews</li>
+                    <ul style="margin-top: 8px;">
+                        <li>Product discussions</li>
                         <li>Exclusive promotions</li>
-                        <li>Credit & debt management</li>
                         <li>Priority support</li>
-                        <li>Networking opportunities</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- Member Registration Section -->
         <div id="member-register" class="content-section">
             <div class="login-form">
-                <h2 style="text-align: center; color: #2E8B57; margin-bottom: 20px;">Register as Member</h2>
-                
+                <h2 style="text-align: center; color: #2E8B57; margin-bottom: 15px;">Register</h2>
                 <form id="member-register-form" onsubmit="memberRegister(event)">
                     <div class="form-group">
                         <label>Full Name *</label>
                         <input type="text" id="reg-name" required>
                     </div>
-
                     <div class="form-group">
-                        <label>Email Address *</label>
+                        <label>Email *</label>
                         <input type="email" id="reg-email" required>
                     </div>
-
                     <div class="form-group">
-                        <label>Phone Number *</label>
+                        <label>Phone *</label>
                         <input type="tel" id="reg-phone" required>
                     </div>
-
                     <div class="form-group">
-                        <label>Business/Organization (Optional)</label>
+                        <label>Business (Optional)</label>
                         <input type="text" id="reg-business">
                     </div>
-
                     <div class="form-group">
                         <label>Password *</label>
                         <input type="password" id="reg-password" required minlength="6">
                         <span class="password-toggle" onclick="togglePassword('reg-password')">👁️</span>
                     </div>
-
                     <div class="form-group">
                         <label>Confirm Password *</label>
                         <input type="password" id="reg-confirm-password" required minlength="6">
                         <span class="password-toggle" onclick="togglePassword('reg-confirm-password')">👁️</span>
                     </div>
-
-                    <button type="submit" class="submit-btn" style="width: 100%;">Register</button>
-                    
+                    <button type="submit" class="submit-btn">Register</button>
                     <div class="auth-links">
-                        <a href="#" onclick="showSection('members-login'); return false;">Already have an account? Login</a>
+                        <a href="#" onclick="showSection('members-login'); return false;">Already registered? Login</a>
                     </div>
-
-                    <div class="success-message" id="register-success">
-                        ✅ Registration successful! Please login.
-                    </div>
-                    <div class="error-message" id="register-error"></div>
                 </form>
             </div>
         </div>
 
-        <!-- Password Reset Section -->
         <div id="password-reset" class="content-section">
             <div class="login-form">
-                <h2 style="text-align: center; color: #2E8B57; margin-bottom: 20px;">Reset Password</h2>
-                
+                <h2 style="text-align: center; color: #2E8B57; margin-bottom: 15px;">Reset Password</h2>
                 <form id="password-reset-form" onsubmit="passwordReset(event)">
                     <div class="form-group">
                         <label>Email Address</label>
                         <input type="email" id="reset-email" required>
                     </div>
-
-                    <button type="submit" class="submit-btn" style="width: 100%;">Send Reset Link</button>
-                    
+                    <button type="submit" class="submit-btn">Send Reset Link</button>
                     <div class="auth-links">
                         <a href="#" onclick="showSection('members-login'); return false;">Back to Login</a>
                     </div>
-
-                    <div class="success-message" id="reset-success">
-                        ✅ Password reset link sent to your email!
-                    </div>
-                    <div class="error-message" id="reset-error"></div>
                 </form>
             </div>
         </div>
 
-        <!-- Members Area (Chat & Community) -->
         <div id="members-area" class="content-section">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <h2>👥 Members Community</h2>
-                <button class="submit-btn" onclick="memberLogout()">Logout</button>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <h2>👥 Community</h2>
+                <button class="submit-btn" style="width: auto; padding: 8px 20px;" onclick="memberLogout()">Logout</button>
             </div>
 
-            <div style="background: #e0f2f1; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+            <div class="info-box">
                 <p><strong>Welcome, <span id="member-name-display">Member</span>!</strong></p>
-                <p style="font-size: 0.9em; color: #666;">Connect with other members, discuss products, and stay updated.</p>
             </div>
 
             <div class="chat-container">
                 <div class="chat-messages" id="chat-messages">
-                    <p style="text-align: center; color: #999;">Loading messages...</p>
+                    <p style="text-align: center; color: #999; font-size: 0.9em;">Loading messages...</p>
                 </div>
                 <div class="chat-input-area">
-                    <input type="text" id="chat-input" placeholder="Type your message..." onkeypress="if(event.key==='Enter') sendMessage()">
+                    <input type="text" id="chat-input" placeholder="Type message..." onkeypress="if(event.key==='Enter') sendMessage()">
                     <button class="submit-btn" onclick="sendMessage()">Send</button>
                 </div>
             </div>
 
-            <div style="margin-top: 30px;">
-                <h3>💬 Discussion Topics</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px;">
-                    <div style="background: #f0f0f0; padding: 15px; border-radius: 8px;">
-                        <h4>🏥 Medical Products</h4>
-                        <p style="font-size: 0.9em;">Discuss medical equipment quality, pricing, and availability</p>
-                    </div>
-                    <div style="background: #f0f0f0; padding: 15px; border-radius: 8px;">
-                        <h4>🦺 Industrial Safety</h4>
-                        <p style="font-size: 0.9em;">Share experiences with safety equipment and protective gear</p>
-                    </div>
-                    <div style="background: #f0f0f0; padding: 15px; border-radius: 8px;">
-                        <h4>💰 Promotions & Offers</h4>
-                        <p style="font-size: 0.9em;">Get exclusive deals and member-only discounts</p>
-                    </div>
-                    <div style="background: #f0f0f0; padding: 15px; border-radius: 8px;">
-                        <h4>📦 Order Support</h4>
-                        <p style="font-size: 0.9em;">Track orders, delivery updates, and customer service</p>
-                    </div>
+            <div class="referral-section">
+                <h3>🎁 Refer & Earn Karibu Points!</h3>
+                <p style="margin-bottom: 12px; font-size: 0.9em;">Invite friends and earn rewards!</p>
+                <div class="referral-link-box">
+                    <p style="font-size: 0.85em; margin-bottom: 8px;"><strong>Your Referral Link:</strong></p>
+                    <input type="text" id="referral-link" readonly value="">
+                    <button onclick="copyReferralLink()" class="copy-btn">📋 Copy Link</button>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.2); padding: 12px; border-radius: 8px; font-size: 0.85em;">
+                    <p><strong>How it works:</strong></p>
+                    <ul style="margin-top: 8px; line-height: 1.6;">
+                        <li>Share your link with friends</li>
+                        <li>They sign up & make first purchase</li>
+                        <li>You both earn Karibu Points!</li>
+                    </ul>
                 </div>
             </div>
         </div>
 
-        <!-- Newsletter Section -->
         <div id="newsletter" class="content-section">
-            <h2>Newsletter Subscription</h2>
-            <p style="margin-bottom: 20px;">Subscribe to receive updates on new products, special offers, and price changes!</p>
-            
+            <h2>Newsletter</h2>
+            <p style="margin-bottom: 15px; font-size: 0.9em;">Subscribe for updates and special offers!</p>
             <form id="newsletter-form" onsubmit="subscribeNewsletter(event)">
                 <div class="form-group">
                     <label>Full Name *</label>
                     <input type="text" id="subscriber-name" required>
                 </div>
-
                 <div class="form-group">
-                    <label>Email Address *</label>
+                    <label>Email *</label>
                     <input type="email" id="subscriber-email" required>
                 </div>
-
                 <div class="form-group">
-                    <label>Business/Organization Name</label>
+                    <label>Business (Optional)</label>
                     <input type="text" id="subscriber-business">
                 </div>
-
                 <button type="submit" class="submit-btn">Subscribe Now</button>
-                <div class="success-message" id="newsletter-success">
-                    ✅ Thank you for subscribing!
-                </div>
             </form>
         </div>
 
-        <!-- Admin Login Section -->
         <div id="admin-login" class="content-section">
             <div class="login-form">
-                <h2 style="text-align: center; color: #2E8B57; margin-bottom: 20px;">Admin Login</h2>
+                <h2 style="text-align: center; color: #2E8B57; margin-bottom: 15px;">Admin Login</h2>
                 <form id="admin-login-form" onsubmit="adminLogin(event)">
                     <div class="form-group">
                         <label>Email</label>
                         <input type="email" id="admin-email" required>
                     </div>
-
                     <div class="form-group">
                         <label>Password</label>
                         <input type="password" id="admin-password" required>
                         <span class="password-toggle" onclick="togglePassword('admin-password')">👁️</span>
                     </div>
-
-                    <button type="submit" class="submit-btn" style="width: 100%;">Login</button>
-                    <div class="error-message" id="admin-login-error">
-                        ❌ Invalid credentials
-                    </div>
+                    <button type="submit" class="submit-btn">Login</button>
                 </form>
             </div>
         </div>
 
-        <!-- Admin Panel Section -->
         <div id="admin-panel" class="content-section">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <h2>Admin Panel - Order Management</h2>
-                <button class="submit-btn" onclick="adminLogout()">Logout</button>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+                <h2 style="margin: 0;">Admin Panel</h2>
+                <button class="submit-btn" style="width: auto; padding: 8px 20px;" onclick="adminLogout()">Logout</button>
             </div>
             
             <div class="admin-panel">
                 <h3>📝 Placed Orders</h3>
                 <div id="placed-orders"></div>
             </div>
-
-            <div class="admin-panel" style="margin-top: 20px;">
+            <div class="admin-panel">
                 <h3>📥 Received Orders</h3>
                 <div id="received-orders"></div>
             </div>
-
-            <div class="admin-panel" style="margin-top: 20px;">
+            <div class="admin-panel">
                 <h3>⚠️ Pending Issues</h3>
                 <div id="pending-orders"></div>
             </div>
-
-            <div class="admin-panel" style="margin-top: 20px;">
+            <div class="admin-panel">
                 <h3>⚙️ Processing Orders</h3>
                 <div id="processing-orders"></div>
             </div>
-
-            <div class="admin-panel" style="margin-top: 20px;">
+            <div class="admin-panel">
                 <h3>📦 Packaging Orders</h3>
                 <div id="packaging-orders"></div>
             </div>
-
-            <div class="admin-panel" style="margin-top: 20px;">
+            <div class="admin-panel">
                 <h3>🚚 Delivering Orders</h3>
                 <div id="delivering-orders"></div>
             </div>
-
-            <div class="admin-panel" style="margin-top: 20px;">
+            <div class="admin-panel">
                 <h3>✅ Delivered Orders</h3>
                 <div id="delivered-orders"></div>
             </div>
         </div>
     </div>
 
-    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 
     <script>
-        // ============================================
-        // FIREBASE CONFIGURATION
-        // ============================================
         const firebaseConfig = {
             apiKey: "AIzaSyAxfNEENGYmwQi6ehqz1WnZRKjtTcK1Is0",
             authDomain: "reach-out-ema-agency.firebaseapp.com",
@@ -1115,24 +935,17 @@
             appId: "1:81621660350:web:75af6d6a74a0010d5524ef"
         };
 
-        // Initialize Firebase
-        let app, auth, db;
-        let firebaseEnabled = false;
-
+        let app, auth, db, firebaseEnabled = false;
         try {
             app = firebase.initializeApp(firebaseConfig);
             auth = firebase.auth();
             db = firebase.firestore();
             firebaseEnabled = true;
-            console.log("✅ Firebase initialized successfully");
+            console.log("✅ Firebase initialized");
         } catch (error) {
-            console.error("❌ Firebase initialization error:", error);
-            firebaseEnabled = false;
+            console.error("❌ Firebase error:", error);
         }
 
-        // ============================================
-        // DATA MANAGEMENT
-        // ============================================
         const products = [
             { id: 1, name: 'Medical Scrubs Set', category: 'medical', price: 2500, description: 'High-quality hospital scrubs' },
             { id: 2, name: 'PPE Kit Complete', category: 'medical', price: 3500, description: 'Full PPE kit' },
@@ -1145,7 +958,7 @@
             { id: 9, name: 'Industrial Gloves (Pair)', category: 'industrial', price: 350, description: 'Work gloves' },
             { id: 10, name: 'Safety Goggles', category: 'industrial', price: 600, description: 'Protective eyewear' },
             { id: 11, name: 'Graduation Gown', category: 'educational', price: 3000, description: 'Academic gown with cap' },
-            { id: 12, name: 'School Uniform Set', category: 'educational', price: 2800, description: 'Complete uniform' },
+            { id: 12, name: 'School Uniform Set', category: 'educational', price: 2800, description: 'Complete uniform' }
         ];
 
         let orders = [];
@@ -1153,102 +966,289 @@
         let isAdminLoggedIn = false;
         let isMemberLoggedIn = false;
         let currentMember = null;
+        let buttonClickStates = {};
 
-        // ============================================
-        // WELCOME MODAL
-        // ============================================
-        function closeWelcomeModal() {
-            document.getElementById('welcome-modal').style.display = 'none';
-        }
-
-        // ============================================
-        // PASSWORD TOGGLE
-        // ============================================
         function togglePassword(fieldId) {
             const field = document.getElementById(fieldId);
             field.type = field.type === 'password' ? 'text' : 'password';
         }
 
-        // ============================================
-        // FIREBASE FUNCTIONS
-        // ============================================
-        async function saveOrderToFirebase(order) {
-            if (!firebaseEnabled) {
-                console.log("Firebase not enabled. Saving locally.");
+        function handleNavClick(event, sectionId) {
+            const button = event.currentTarget;
+            if (!buttonClickStates[sectionId]) {
+                button.classList.add('show-tooltip');
+                buttonClickStates[sectionId] = 1;
+                setTimeout(() => button.classList.remove('show-tooltip'), 2000);
+            } else {
+                button.classList.remove('show-tooltip');
+                showSection(sectionId);
+                buttonClickStates[sectionId] = 0;
+            }
+        }
+
+        function showNotification(message, type = 'info') {
+            const existing = document.querySelector('.notification');
+            if (existing) existing.remove();
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            setTimeout(() => notification.remove(), 3000);
+        }
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.classList.add('active');
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function displayProducts(filterCategory = 'all') {
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = '';
+            const filtered = filterCategory === 'all' ? products : products.filter(p => p.category === filterCategory);
+            filtered.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <h3>${product.name}</h3>
+                    <p>${product.description}</p>
+                    <div class="product-price">KES ${product.price.toLocaleString()}</div>
+                    <button class="update-order-btn" onclick="openLiveOrder(${product.id})">Update Order</button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterProducts(category, event) {
+            document.querySelectorAll('.category-tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            displayProducts(category);
+        }
+
+        function openLiveOrder(productId) {
+            currentProduct = products.find(p => p.id === productId);
+            document.getElementById('product-order-details').innerHTML = `
+                <div class="info-box">
+                    <h3>${currentProduct.name}</h3>
+                    <p>${currentProduct.description}</p>
+                    <div class="product-price">Unit Price: KES ${currentProduct.price.toLocaleString()}</div>
+                </div>
+            `;
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('lo-placement-date').value = today;
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('lo-delivery-date').min = tomorrow.toISOString().split('T')[0];
+            updateLiveOrderTotal();
+            showSection('live-order');
+        }
+
+        function updateLiveOrderTotal() {
+            if (!currentProduct) return;
+            const sizes = ['s', 'm', 'l', 'xl', 'xxl'];
+            let totalQty = 0;
+            sizes.forEach(size => {
+                totalQty += parseInt(document.getElementById(`qty-${size}`).value) || 0;
+            });
+            document.getElementById('live-order-total').textContent = (currentProduct.price * totalQty).toLocaleString();
+            document.getElementById('total-items').textContent = totalQty;
+        }
+
+        function submitLiveOrder(e) {
+            e.preventDefault();
+            const orderId = 'ORD-' + Date.now();
+            const sizeQty = {
+                S: parseInt(document.getElementById('qty-s').value) || 0,
+                M: parseInt(document.getElementById('qty-m').value) || 0,
+                L: parseInt(document.getElementById('qty-l').value) || 0,
+                XL: parseInt(document.getElementById('qty-xl').value) || 0,
+                XXL: parseInt(document.getElementById('qty-xxl').value) || 0
+            };
+            const totalQty = Object.values(sizeQty).reduce((a, b) => a + b, 0);
+            if (totalQty === 0) {
+                showNotification('Please specify at least one item quantity!', 'error');
                 return;
             }
-            try {
-                await db.collection('orders').doc(order.id).set(order);
-                console.log("✅ Order saved to Firebase");
-            } catch (error) {
-                console.error("❌ Error saving order:", error);
+            const order = {
+                id: orderId,
+                customer: {
+                    name: document.getElementById('lo-customer-name').value,
+                    email: document.getElementById('lo-customer-email').value,
+                    phone: document.getElementById('lo-customer-phone').value,
+                    address: document.getElementById('lo-delivery-address').value
+                },
+                product: currentProduct,
+                placementDate: document.getElementById('lo-placement-date').value,
+                deliveryDate: document.getElementById('lo-delivery-date').value,
+                sizeQuantities: sizeQty,
+                totalQuantity: totalQty,
+                specialInstructions: document.getElementById('lo-special-instructions').value,
+                total: currentProduct.price * totalQty,
+                stage: 'placed',
+                orderDate: new Date().toISOString()
+            };
+            orders.push(order);
+            saveOrderToFirebase(order);
+            showNotification('Order submitted successfully!', 'success');
+            document.getElementById('live-order-form').reset();
+            displayAdminOrders();
+            showSection('track-order');
+            document.getElementById('track-order-id').value = orderId;
+        }
+
+        function trackOrder() {
+            const orderId = document.getElementById('track-order-id').value.trim();
+            if (!orderId) {
+                showNotification('Please enter an Order ID', 'error');
+                return;
+            }
+            const order = orders.find(o => o.id === orderId);
+            if (!order) {
+                showNotification('Order not found!', 'error');
+                return;
+            }
+            document.getElementById('order-info').innerHTML = `
+                <div style="background: white; padding: 12px; border-radius: 8px; margin-bottom: 15px; font-size: 0.9em;">
+                    <p><strong>Order ID:</strong> ${order.id}</p>
+                    <p><strong>Product:</strong> ${order.product.name}</p>
+                    <p><strong>Quantity:</strong> ${order.totalQuantity}</p>
+                    <p><strong>Total:</strong> KES ${order.total.toLocaleString()}</p>
+                    <p><strong>Expected Delivery:</strong> ${order.deliveryDate}</p>
+                    <p><strong>Status:</strong> <span style="font-weight: bold; color: #2E8B57;">${getStageText(order.stage)}</span></p>
+                </div>
+            `;
+            updateTrackingStages(order.stage);
+            document.getElementById('tracking-result').style.display = 'block';
+        }
+
+        function updateTrackingStages(currentStage) {
+            const stages = ['placed', 'received', 'pending-issues', 'processing', 'packaging', 'delivering', 'delivered'];
+            const stageOrder = stages.indexOf(currentStage);
+            stages.forEach((stage, index) => {
+                const stageEl = document.getElementById(`stage-${stage}`);
+                if (stageEl) {
+                    stageEl.className = 'stage-circle';
+                    if (index <= stageOrder) stageEl.classList.add(stage);
+                }
+            });
+        }
+
+        function getStageText(stage) {
+            const texts = {
+                'placed': 'Order Placed',
+                'received': 'Order Received',
+                'pending-issues': 'Pending Issues',
+                'processing': 'Processing',
+                'packaging': 'Packaging',
+                'delivering': 'Out for Delivery',
+                'delivered': 'Delivered'
+            };
+            return texts[stage] || 'Unknown';
+        }
+
+        function adminLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('admin-email').value;
+            const password = document.getElementById('admin-password').value;
+            if (firebaseEnabled) {
+                auth.signInWithEmailAndPassword(email, password)
+                    .then(userCredential => db.collection('admins').doc(userCredential.user.uid).get())
+                    .then(doc => {
+                        if (doc.exists) {
+                            isAdminLoggedIn = true;
+                            loadOrdersFromFirebase();
+                            showSection('admin-panel');
+                            showNotification('Admin login successful!', 'success');
+                        } else {
+                            throw new Error('Not admin');
+                        }
+                    })
+                    .catch(() => showNotification('Invalid admin credentials', 'error'));
+            } else {
+                if (email === 'admin@reachout.com' && password === 'admin123') {
+                    isAdminLoggedIn = true;
+                    displayAdminOrders();
+                    showSection('admin-panel');
+                    showNotification('Admin login successful!', 'success');
+                } else {
+                    showNotification('Invalid credentials', 'error');
+                }
             }
         }
 
-        async function loadOrdersFromFirebase() {
-            if (!firebaseEnabled) return;
-            try {
-                const snapshot = await db.collection('orders').get();
-                orders = snapshot.docs.map(doc => doc.data());
-                displayAdminOrders();
-                console.log("✅ Orders loaded from Firebase");
-            } catch (error) {
-                console.error("❌ Error loading orders:", error);
+        function adminLogout() {
+            if (firebaseEnabled) auth.signOut();
+            isAdminLoggedIn = false;
+            showSection('home');
+            showNotification('Logged out', 'info');
+        }
+
+        function passwordReset(e) {
+            e.preventDefault();
+            const email = document.getElementById('reset-email').value;
+            if (firebaseEnabled) {
+                auth.sendPasswordResetEmail(email)
+                    .then(() => {
+                        showNotification('Password reset link sent!', 'success');
+                        setTimeout(() => {
+                            document.getElementById('password-reset-form').reset();
+                            showSection('members-login');
+                        }, 2000);
+                    })
+                    .catch(error => showNotification(error.message, 'error'));
+            } else {
+                showNotification('Password reset requires live connection', 'error');
             }
         }
 
-        async function updateOrderInFirebase(orderId, updates) {
-            if (!firebaseEnabled) return;
-            try {
-                await db.collection('orders').doc(orderId).update(updates);
-                console.log("✅ Order updated in Firebase");
-            } catch (error) {
-                console.error("❌ Error updating order:", error);
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+            if (!message || !isMemberLoggedIn || !currentMember) {
+                showNotification('Please login to send messages', 'error');
+                return;
             }
-        }
-
-        async function saveSubscriberToFirebase(subscriber) {
-            if (!firebaseEnabled) return;
-            try {
-                await db.collection('subscribers').add(subscriber);
-                console.log("✅ Subscriber saved to Firebase");
-            } catch (error) {
-                console.error("❌ Error saving subscriber:", error);
-            }
+            const chatMessage = {
+                senderName: currentMember.name,
+                senderEmail: currentMember.email,
+                message: message,
+                timestamp: new Date().toISOString()
+            };
+            saveChatMessage(chatMessage);
+            input.value = '';
         }
 
         async function saveChatMessage(message) {
             if (!firebaseEnabled) return;
             try {
                 await db.collection('chat_messages').add(message);
-                console.log("✅ Message saved");
             } catch (error) {
-                console.error("❌ Error saving message:", error);
+                console.error('❌ Chat error:', error);
             }
         }
 
         async function loadChatMessages() {
             if (!firebaseEnabled) {
-                document.getElementById('chat-messages').innerHTML = '<p style="text-align: center; color: #999;">Chat is only available in live mode</p>';
+                document.getElementById('chat-messages').innerHTML = '<p style="text-align: center; color: #999; font-size: 0.85em;">Chat requires live connection</p>';
                 return;
             }
             try {
                 db.collection('chat_messages')
                     .orderBy('timestamp', 'desc')
                     .limit(50)
-                    .onSnapshot((snapshot) => {
+                    .onSnapshot(snapshot => {
                         const messagesDiv = document.getElementById('chat-messages');
                         messagesDiv.innerHTML = '';
-                        
                         const messages = [];
                         snapshot.forEach(doc => messages.push(doc.data()));
                         messages.reverse();
-
                         if (messages.length === 0) {
-                            messagesDiv.innerHTML = '<p style="text-align: center; color: #999;">No messages yet. Start the conversation!</p>';
+                            messagesDiv.innerHTML = '<p style="text-align: center; color: #999; font-size: 0.85em;">No messages yet. Start the conversation!</p>';
                             return;
                         }
-
                         messages.forEach(msg => {
                             const msgDiv = document.createElement('div');
                             msgDiv.className = 'chat-message';
@@ -1262,428 +1262,137 @@
                             `;
                             messagesDiv.appendChild(msgDiv);
                         });
-
                         messagesDiv.scrollTop = messagesDiv.scrollHeight;
                     });
             } catch (error) {
-                console.error("❌ Error loading messages:", error);
+                console.error('❌ Load messages error:', error);
             }
         }
-// ============================================
-        // MEMBER AUTHENTICATION
-        // ============================================
-        function memberRegister(e) {
+
+        function copyReferralLink() {
+            const linkInput = document.getElementById('referral-link');
+            linkInput.select();
+            linkInput.setSelectionRange(0, 99999);
+            try {
+                document.execCommand('copy');
+                showNotification('Referral link copied!', 'success');
+            } catch (err) {
+                showNotification('Failed to copy', 'error');
+            }
+        }
+
+        function subscribeNewsletter(e) {
             e.preventDefault();
-            
-            const email = document.getElementById('reg-email').value;
-            const password = document.getElementById('reg-password').value;
-            const confirmPassword = document.getElementById('reg-confirm-password').value;
-            const name = document.getElementById('reg-name').value;
-            const phone = document.getElementById('reg-phone').value;
-            const business = document.getElementById('reg-business').value;
-
-            if (password !== confirmPassword) {
-                showError('register-error', 'Passwords do not match!');
-                return;
-            }
-
-            if (firebaseEnabled) {
-                auth.createUserWithEmailAndPassword(email, password)
-                    .then((userCredential) => {
-                        // Save additional user info
-                        return db.collection('members').doc(userCredential.user.uid).set({
-                            name: name,
-                            email: email,
-                            phone: phone,
-                            business: business,
-                            joinDate: new Date().toISOString()
-                        });
-                    })
-                    .then(() => {
-                        showSuccess('register-success');
-                        setTimeout(() => {
-                            document.getElementById('member-register-form').reset();
-                            showSection('members-login');
-                        }, 2000);
-                    })
-                    .catch((error) => {
-                        showError('register-error', error.message);
-                    });
-            } else {
-                showError('register-error', 'Registration requires live connection');
-            }
-        }
-
-        function memberLogin(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('member-email').value;
-            const password = document.getElementById('member-password').value;
-
-            if (firebaseEnabled) {
-                auth.signInWithEmailAndPassword(email, password)
-                    .then((userCredential) => {
-                        return db.collection('members').doc(userCredential.user.uid).get();
-                    })
-                    .then((doc) => {
-                        if (doc.exists) {
-                            currentMember = doc.data();
-                            isMemberLoggedIn = true;
-                            document.getElementById('member-name-display').textContent = currentMember.name;
-                            loadChatMessages();
-                            showSection('members-area');
-                        }
-                    })
-                    .catch((error) => {
-                        showError('member-login-error');
-                    });
-            } else {
-                showError('member-login-error');
-            }
-        }
-
-        function memberLogout() {
-            if (firebaseEnabled) {
-                auth.signOut();
-            }
-            isMemberLoggedIn = false;
-            currentMember = null;
-            showSection('home');
-        }
-
-        function passwordReset(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('reset-email').value;
-
-            if (firebaseEnabled) {
-                auth.sendPasswordResetEmail(email)
-                    .then(() => {
-                        showSuccess('reset-success');
-                        setTimeout(() => {
-                            document.getElementById('password-reset-form').reset();
-                        }, 3000);
-                    })
-                    .catch((error) => {
-                        showError('reset-error', error.message);
-                    });
-            } else {
-                showError('reset-error', 'Password reset requires live connection');
-            }
-        }
-
-        // ============================================
-        // CHAT FUNCTIONS
-        // ============================================
-        function sendMessage() {
-            const input = document.getElementById('chat-input');
-            const message = input.value.trim();
-
-            if (!message || !isMemberLoggedIn || !currentMember) return;
-
-            const chatMessage = {
-                senderName: currentMember.name,
-                senderEmail: currentMember.email,
-                message: message,
-                timestamp: new Date().toISOString()
+            const subscriber = {
+                name: document.getElementById('subscriber-name').value,
+                email: document.getElementById('subscriber-email').value,
+                business: document.getElementById('subscriber-business').value,
+                subscribeDate: new Date().toISOString()
             };
-
-            saveChatMessage(chatMessage);
-            input.value = '';
+            saveSubscriberToFirebase(subscriber);
+            showNotification('Thank you for subscribing!', 'success');
+            document.getElementById('newsletter-form').reset();
         }
 
-        // ============================================
-        // ADMIN AUTHENTICATION
-        // ============================================
-        function adminLogin(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('admin-email').value;
-            const password = document.getElementById('admin-password').value;
+        async function saveOrderToFirebase(order) {
+            if (!firebaseEnabled) return;
+            try {
+                await db.collection('orders').doc(order.id).set(order);
+            } catch (error) {
+                console.error('❌ Save order error:', error);
+            }
+        }
 
+        async function loadOrdersFromFirebase() {
+            if (!firebaseEnabled) return;
+            try {
+                const snapshot = await db.collection('orders').get();
+                orders = snapshot.docs.map(doc => doc.data());
+                displayAdminOrders();
+            } catch (error) {
+                console.error('❌ Load orders error:', error);
+            }
+        }
+
+        async function updateOrderInFirebase(orderId, updates) {
+            if (!firebaseEnabled) return;
+            try {
+                await db.collection('orders').doc(orderId).update(updates);
+            } catch (error) {
+                console.error('❌ Update order error:', error);
+            }
+        }
+
+        async function saveSubscriberToFirebase(subscriber) {
+            if (!firebaseEnabled) return;
+            try {
+                await db.collection('subscribers').add(subscriber);
+            } catch (error) {
+                console.error('❌ Save subscriber error:', error);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            console.log('🚀 App initializing...');
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(registration => console.log('✅ Service Worker registered:', registration))
+                    .catch(error => console.log('❌ Service Worker failed:', error));
+            }
+            displayProducts();
             if (firebaseEnabled) {
-                auth.signInWithEmailAndPassword(email, password)
-                    .then((userCredential) => {
-                        // Check if user is admin
-                        return db.collection('admins').doc(userCredential.user.uid).get();
-                    })
-                    .then((doc) => {
-                        if (doc.exists) {
-                            isAdminLoggedIn = true;
-                            loadOrdersFromFirebase();
-                            showSection('admin-panel');
-                        } else {
-                            throw new Error('Not an admin account');
-                        }
-                    })
-                    .catch((error) => {
-                        console.error("Admin login error:", error);
-                        showError('admin-login-error');
-                    });
-            } else {
-                // Local testing
-                if (email === 'admin@reachout.com' && password === 'admin123') {
-                    isAdminLoggedIn = true;
-                    displayAdminOrders();
-                    showSection('admin-panel');
-                } else {
-                    showError('admin-login-error');
-                }
-            }
+                auth.onAuthStateChanged(user => {
+                    if (user) {
+                        db.collection('admins').doc(user.uid).get()
+                            .then(doc => {
+                                if (doc.exists) {
+                                    isAdminLoggedIn = true;
+                                    loadOrdersFromFirebase();
+                                }
+                            });
+                        db.collection('members').doc(user.uid).get()
+                            .then(doc => {
+                                if (doc.exists) {
+                                    currentMember = doc.data();
+                                    isMemberLoggedIn = true;
+showNotification('Logged out', 'info');
         }
 
-        function adminLogout() {
-            if (firebaseEnabled) {
-                auth.signOut();
-            }
-            isAdminLoggedIn = false;
-            showSection('home');
-        }
-
-        // ============================================
-        // PRODUCT DISPLAY
-        // ============================================
-        function displayProducts(filterCategory = 'all') {
-            const grid = document.getElementById('products-grid');
-            grid.innerHTML = '';
-
-            const filteredProducts = filterCategory === 'all' 
-                ? products 
-                : products.filter(p => p.category === filterCategory);
-
-            filteredProducts.forEach(product => {
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                card.innerHTML = `
-                    <h3>${product.name}</h3>
-                    <p>${product.description}</p>
-                    <div class="product-price">KES ${product.price.toLocaleString()}</div>
-                    <button class="update-order-btn" onclick="openLiveOrder(${product.id})">Update Order</button>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        function filterProducts(category) {
-            document.querySelectorAll('.category-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            displayProducts(category);
-        }
-
-        // ============================================
-        // LIVE ORDER FORM
-        // ============================================
-        function openLiveOrder(productId) {
-            currentProduct = products.find(p => p.id === productId);
-            const details = document.getElementById('product-order-details');
-            
-            details.innerHTML = `
-                <div style="background: #e0f2f1; padding: 20px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #20B2AA;">
-                    <h3>${currentProduct.name}</h3>
-                    <p>${currentProduct.description}</p>
-                    <div class="product-price">Unit Price: KES ${currentProduct.price.toLocaleString()}</div>
-                </div>
-            `;
-            
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('lo-placement-date').value = today;
-            
-            const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            document.getElementById('lo-delivery-date').min = tomorrow.toISOString().split('T')[0];
-            
-            updateLiveOrderTotal();
-            showSection('live-order');
-        }
-
-        function updateLiveOrderTotal() {
-            if (!currentProduct) return;
-            
-            const sizes = ['s', 'm', 'l', 'xl', 'xxl'];
-            let totalQty = 0;
-            
-            sizes.forEach(size => {
-                const qty = parseInt(document.getElementById(`qty-${size}`).value) || 0;
-                totalQty += qty;
-            });
-            
-            const total = currentProduct.price * totalQty;
-            document.getElementById('live-order-total').textContent = total.toLocaleString();
-            document.getElementById('total-items').textContent = totalQty;
-        }
-
-        function submitLiveOrder(e) {
-            e.preventDefault();
-
-            const orderId = 'ORD-' + Date.now();
-            
-            const sizeQty = {
-                S: parseInt(document.getElementById('qty-s').value) || 0,
-                M: parseInt(document.getElementById('qty-m').value) || 0,
-                L: parseInt(document.getElementById('qty-l').value) || 0,
-                XL: parseInt(document.getElementById('qty-xl').value) || 0,
-                XXL: parseInt(document.getElementById('qty-xxl').value) || 0
-            };
-
-            const colorQty = {
-                White: parseInt(document.getElementById('color-white').value) || 0,
-                Blue: parseInt(document.getElementById('color-blue').value) || 0,
-                Green: parseInt(document.getElementById('color-green').value) || 0,
-                Black: parseInt(document.getElementById('color-black').value) || 0,
-                Other: document.getElementById('color-other').value
-            };
-
-            const totalQty = Object.values(sizeQty).reduce((a, b) => a + b, 0);
-
-            if (totalQty === 0) {
-                alert('Please specify at least one item quantity!');
-                return;
-            }
-
-            const order = {
-                id: orderId,
-                customer: {
-                    name: document.getElementById('lo-customer-name').value,
-                    email: document.getElementById('lo-customer-email').value,
-                    phone: document.getElementById('lo-customer-phone').value,
-                    address: document.getElementById('lo-delivery-address').value,
-                },
-                product: currentProduct,
-                placementDate: document.getElementById('lo-placement-date').value,
-                deliveryDate: document.getElementById('lo-delivery-date').value,
-                sizeQuantities: sizeQty,
-                colorQuantities: colorQty,
-                totalQuantity: totalQty,
-                specialInstructions: document.getElementById('lo-special-instructions').value,
-                total: currentProduct.price * totalQty,
-                stage: 'placed',
-                orderDate: new Date().toISOString()
-            };
-
-            orders.push(order);
-            saveOrderToFirebase(order);
-            
-            alert(`✅ Order ${orderId} submitted successfully!\n\nYour order is being processed. You can track it using your Order ID.`);
-            
-            document.getElementById('live-order-form').reset();
-            displayAdminOrders();
-            showSection('track-order');
-            document.getElementById('track-order-id').value = orderId;
-        }
-
-        // ============================================
-        // ORDER TRACKING
-        // ============================================
-        function trackOrder() {
-            const orderId = document.getElementById('track-order-id').value.trim();
-            
-            if (!orderId) {
-                alert('Please enter an Order ID');
-                return;
-            }
-
-            const order = orders.find(o => o.id === orderId);
-            
-            if (!order) {
-                alert('Order not found! Please check your Order ID and try again.');
-                return;
-            }
-
-            const orderInfo = document.getElementById('order-info');
-            orderInfo.innerHTML = `
-                <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-                    <p><strong>Order ID:</strong> ${order.id}</p>
-                    <p><strong>Product:</strong> ${order.product.name}</p>
-                    <p><strong>Total Quantity:</strong> ${order.totalQuantity}</p>
-                    <p><strong>Total:</strong> KES ${order.total.toLocaleString()}</p>
-                    <p><strong>Expected Delivery:</strong> ${order.deliveryDate}</p>
-                    <p><strong>Current Status:</strong> <span style="font-weight: bold;">${getStageText(order.stage)}</span></p>
-                </div>
-            `;
-
-            updateTrackingStages(order.stage);
-            document.getElementById('tracking-result').style.display = 'block';
-        }
-
-        function updateTrackingStages(currentStage) {
-            const stages = ['placed', 'received', 'pending-issues', 'processing', 'packaging', 'delivering', 'delivered'];
-            const stageOrder = stages.indexOf(currentStage);
-
-            stages.forEach((stage, index) => {
-                const stageEl = document.getElementById(`stage-${stage}`);
-                if (!stageEl) return;
-                stageEl.className = 'stage-circle';
-                
-                if (index <= stageOrder) {
-                    stageEl.classList.add(stage);
-                }
-            });
-        }
-
-        function getStageText(stage) {
-            const stageTexts = {
-                'placed': 'Order Placed',
-                'received': 'Order Received',
-                'pending-issues': 'Pending Issues',
-                'processing': 'Processing Order',
-                'packaging': 'Packaging Order',
-                'delivering': 'Out for Delivery',
-                'delivered': 'Delivered'
-            };
-            return stageTexts[stage] || 'Unknown';
-        }
-
-        // ============================================
-        // ADMIN ORDER MANAGEMENT
-        // ============================================
         function displayAdminOrders() {
             if (!isAdminLoggedIn) return;
-
             const stages = ['placed', 'received', 'pending', 'processing', 'packaging', 'delivering', 'delivered'];
-            
             stages.forEach(stage => {
                 const containerId = stage === 'pending' ? 'pending-orders' : `${stage}-orders`;
                 const container = document.getElementById(containerId);
                 if (!container) return;
-                
                 container.innerHTML = '';
-                
-                const stageOrders = orders.filter(o => {
-                    if (stage === 'pending') return o.stage === 'pending-issues';
-                    return o.stage === stage;
-                });
-
+                const stageOrders = orders.filter(o => stage === 'pending' ? o.stage === 'pending-issues' : o.stage === stage);
                 if (stageOrders.length === 0) {
-                    container.innerHTML = '<p>No orders in this stage</p>';
+                    container.innerHTML = '<p style="color: #999;">No orders</p>';
                     return;
                 }
-
                 stageOrders.forEach(order => {
-                    const orderDiv = document.createElement('div');
-                    orderDiv.className = 'order-item';
-                    
+                    const div = document.createElement('div');
+                    div.className = 'order-item';
                     let sizeDetails = '';
                     Object.entries(order.sizeQuantities).forEach(([size, qty]) => {
                         if (qty > 0) sizeDetails += `${size}: ${qty}, `;
                     });
                     sizeDetails = sizeDetails.slice(0, -2);
-
-                    orderDiv.innerHTML = `
+                    div.innerHTML = `
                         <strong>Order #${order.id}</strong><br>
                         Product: ${order.product.name}<br>
-                        Customer: ${order.customer.name} (${order.customer.email})<br>
+                        Customer: ${order.customer.name}<br>
+                        Email: ${order.customer.email}<br>
                         Phone: ${order.customer.phone}<br>
-                        Total Quantity: ${order.totalQuantity} (${sizeDetails})<br>
+                        Quantity: ${order.totalQuantity} (${sizeDetails})<br>
                         Total: KES ${order.total.toLocaleString()}<br>
-                        Placement Date: ${order.placementDate}<br>
-                        Delivery Date: ${order.deliveryDate}<br>
+                        Delivery: ${order.deliveryDate}<br>
                         <div style="margin-top: 10px;">
                             ${getStageButtons(order)}
                         </div>
                     `;
-                    container.appendChild(orderDiv);
+                    container.appendChild(div);
                 });
             });
         }
@@ -1691,134 +1400,117 @@
         function getStageButtons(order) {
             const stageFlow = ['placed', 'received', 'pending-issues', 'processing', 'packaging', 'delivering', 'delivered'];
             const currentIndex = stageFlow.indexOf(order.stage);
-            
             let buttons = '';
-            
             if (currentIndex < stageFlow.length - 1) {
                 const nextStage = stageFlow[currentIndex + 1];
-                buttons += `<button onclick="advanceStage('${order.id}', '${nextStage}')" style="padding: 8px 15px; background: #20B2AA; color: white; border: none; border-radius: 5px; cursor: pointer; margin-right: 5px;">Advance to ${getStageText(nextStage)}</button>`;
+                buttons += `<button onclick="advanceStage('${order.id}', '${nextStage}')" style="padding: 8px 15px; background: #20B2AA; color: white; border: none; border-radius: 5px; cursor: pointer; margin-right: 5px; margin-bottom: 5px; font-size: 0.85em;">Advance to ${getStageText(nextStage)}</button>`;
             }
-            
             if (order.stage !== 'pending-issues' && order.stage !== 'delivered') {
-                buttons += `<button onclick="advanceStage('${order.id}', 'pending-issues')" style="padding: 8px 15px; background: #FFD700; color: #333; border: none; border-radius: 5px; cursor: pointer;">Mark as Pending</button>`;
+                buttons += `<button onclick="advanceStage('${order.id}', 'pending-issues')" style="padding: 8px 15px; background: #FFD700; color: #333; border: none; border-radius: 5px; cursor: pointer; font-size: 0.85em;">Mark Pending</button>`;
             }
-            
             return buttons;
         }
 
-        function advanceStage(orderId, newStage) {
+        async function advanceStage(orderId, newStage) {
             const order = orders.find(o => o.id === orderId);
             if (order) {
                 order.stage = newStage;
-                updateOrderInFirebase(orderId, { stage: newStage });
+                order.lastUpdated = new Date().toISOString();
+                await updateOrderInFirebase(orderId, { stage: newStage, lastUpdated: order.lastUpdated });
+                if (newStage === 'delivered') await sendCompletionNotification(order);
                 displayAdminOrders();
-                alert(`✅ Order ${orderId} moved to: ${getStageText(newStage)}`);
+                showNotification(`Order moved to: ${getStageText(newStage)}`, 'success');
             }
         }
 
-        // ============================================
-        // NEWSLETTER
-        // ============================================
-        function subscribeNewsletter(e) {
-            e.preventDefault();
-
-            const subscriber = {
-                name: document.getElementById('subscriber-name').value,
-                email: document.getElementById('subscriber-email').value,
-                business: document.getElementById('subscriber-business').value,
-                subscribeDate: new Date().toISOString(),
+        async function sendCompletionNotification(order) {
+            const notification = {
+                orderId: order.id,
+                customerEmail: order.customer.email,
+                customerName: order.customer.name,
+                message: `🎉 Congratulations ${order.customer.name}! Your order has been delivered. Thank you for choosing Reach out Ema Agency!`,
+                timestamp: new Date().toISOString()
             };
-
-            saveSubscriberToFirebase(subscriber);
-            
-            showSuccess('newsletter-success');
-            document.getElementById('newsletter-form').reset();
-        }
-
-        // ============================================
-        // UTILITY FUNCTIONS
-        // ============================================
-        function showSection(sectionId) {
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            const section = document.getElementById(sectionId);
-            if (section) {
-                section.classList.add('active');
-            }
-        }
-
-        function showSuccess(elementId) {
-            const element = document.getElementById(elementId);
-            if (element) {
-                element.style.display = 'block';
-                setTimeout(() => {
-                    element.style.display = 'none';
-                }, 5000);
-            }
-        }
-
-        function showError(elementId, message = '') {
-            const element = document.getElementById(elementId);
-            if (element) {
-                if (message) element.textContent = '❌ ' + message;
-                element.style.display = 'block';
-                setTimeout(() => {
-                    element.style.display = 'none';
-                }, 5000);
-            }
-        }
-
-        // ============================================
-        // INITIALIZATION
-        // ============================================
-        window.addEventListener('DOMContentLoaded', () => {
-            console.log('🚀 App initializing...');
-            
-            // Display products
-            displayProducts();
-            
-            // Firebase auth state listener
             if (firebaseEnabled) {
-                auth.onAuthStateChanged((user) => {
-                    if (user) {
-                        console.log('✅ User authenticated:', user.email);
-                        
-                        // Check if admin
-                        db.collection('admins').doc(user.uid).get()
-                            .then((doc) => {
-                                if (doc.exists) {
-                                    isAdminLoggedIn = true;
-                                    loadOrdersFromFirebase();
-                                }
-                            });
-                        
-                        // Check if member
-                        db.collection('members').doc(user.uid).get()
-                            .then((doc) => {
-                                if (doc.exists) {
-                                    currentMember = doc.data();
-                                    isMemberLoggedIn = true;
+                try {
+                    await db.collection('notifications').add(notification);
+                    console.log('✅ Notification sent');
+                } catch (error) {
+                    console.error('❌ Notification error:', error);
+                }
+            }
+        }
+
+        function memberRegister(e) {
+            e.preventDefault();
+            const password = document.getElementById('reg-password').value;
+            const confirmPassword = document.getElementById('reg-confirm-password').value;
+            if (password !== confirmPassword) {
+                showNotification('Passwords do not match!', 'error');
+                return;
+            }
+            if (firebaseEnabled) {
+                const email = document.getElementById('reg-email').value;
+                auth.createUserWithEmailAndPassword(email, password)
+                    .then(userCredential => {
+                        return db.collection('members').doc(userCredential.user.uid).set({
+                            name: document.getElementById('reg-name').value,
+                            email: email,
+                            phone: document.getElementById('reg-phone').value,
+                            business: document.getElementById('reg-business').value,
+                            joinDate: new Date().toISOString()
+                        });
+                    })
+                    .then(() => {
+                        showNotification('Registration successful! Please login.', 'success');
+                        setTimeout(() => {
+                            document.getElementById('member-register-form').reset();
+                            showSection('members-login');
+                        }, 2000);
+                    })
+                    .catch(error => showNotification(error.message, 'error'));
+            } else {
+                showNotification('Registration requires live connection', 'error');
+            }
+        }
+
+        function memberLogin(e) {
+            e.preventDefault();
+            if (firebaseEnabled) {
+                const email = document.getElementById('member-email').value;
+                const password = document.getElementById('member-password').value;
+                auth.signInWithEmailAndPassword(email, password)
+                    .then(userCredential => db.collection('members').doc(userCredential.user.uid).get())
+                    .then(doc => {
+                        if (doc.exists) {
+                            currentMember = doc.data();
+                            isMemberLoggedIn = true;
+                            document.getElementById('member-name-display').textContent = currentMember.name;
+                            document.getElementById('referral-link').value = `https://reachout.agency/ref?code=${encodeURIComponent(currentMember.email)}`;
+                            loadChatMessages();
+                            showSection('members-area');
+                            showNotification('Welcome back!', 'success');
+                        }
+                    })
+                    .catch(() => showNotification('Invalid credentials', 'error'));
+            } else {
+                showNotification('Login requires live connection', 'error');
+            }
+        }
+
+        function memberLogout() {
+            if (firebaseEnabled) auth.signOut();
+            isMemberLoggedIn = false;
+            currentMember = null;
+            showSection('home');
                                 }
                             });
                     }
                 });
             }
-            
             console.log('✅ App initialized successfully');
         });
-
-        // Test all buttons on page load
-        console.log('🧪 Testing all navigation buttons...');
-        const buttons = document.querySelectorAll('.nav-btn');
-        console.log(`Found ${buttons.length} navigation buttons`);
-        
-        buttons.forEach(btn => {
-            console.log(`✓ Button found: ${btn.textContent}`);
-        });
-        
-        console.log('✅ All buttons tested and working');
     </script>
 </body>
 </html>
+            
